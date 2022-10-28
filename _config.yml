@@ -44,7 +44,7 @@ social:
   email: example@doamin.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/on1tsuka     # change to your twitter homepage
+    - https://twitter.com/tin0_0nit    # change to your twitter homepage
     - https://github.com/tino-onit     # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
@@ -83,7 +83,7 @@ theme_mode:   # [light|dark]
 img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: https://pbs.twimg.com/profile_images/716640932867641348/iKJA3_6z_400x400.jpg
+avatar: https://pbs.twimg.com/profile_images/1586112513589977088/gZAHtSN4_400x400.jpg
 
 # boolean type, the global switch for ToC in posts.
 toc: true
