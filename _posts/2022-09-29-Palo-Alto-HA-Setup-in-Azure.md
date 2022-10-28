@@ -1,5 +1,5 @@
 ---
-title: "How to setup a a Transit VNET with Palo Alto Firewalls in HA"
+title: "How to setup HA Palo Alto vm-series and in a transit VNET"
 date: 2022-09-29 10:00:00 -700
 categories: [cloud, paloalto, firewall]
 tags: [cloud, azure, vnet, firewall, paloalto, ha]    #TAG names should always be lowercase

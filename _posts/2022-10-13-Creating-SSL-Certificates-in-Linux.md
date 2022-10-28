@@ -9,10 +9,11 @@ tags: [ssl,linux,certificates,https]    #TAG names should always be lowercase
 
 I use this every time I need to create a certificate signing request (CSR), for single-name certificates or SAN certificates.
 
+>We will use `server01-san_cert.cnf` for the config file, use whatever name makes sense for you
+
 I copy the code below into a new file, named for the server/service I am creating the CSR for.
 
-> server01-san_cert.cnf
-```bash
+```
 [req]
 [req]
 distinguished_name = req_distinguished_name
@@ -35,14 +36,17 @@ IP.2 = 10.1.1.2
 IP.3 = 10.1.1.3
 DNS.1 = server01a.example.com
 DNS.2 = server01b.example.com
-```
-Next, use _openssl_ to generate the CSR and KEY pair, using the config file
+```  
+
+Next, use `openssl` to generate the CSR and KEY pair, using the config file
+
 ```bash
 openssl req -new -config server01-san_cert.cnf -out server01_cert.csr -keyout server01-priv.key
 ```
+
 You should get prompted for the certificate information, like below
 
-```bash
+```
 Generating a RSA private key
 .............................................................+++++
 ...+++++
