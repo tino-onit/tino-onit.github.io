@@ -2,7 +2,7 @@
 title: "How to create an SSL certificate in Linux"
 date: 2022-10-13 10:00:00 -700
 categories: [ssl,linux]
-tags: [ssl,linux,certificates,https]    #TAG names should always be lowercase
+tags: [ssl,linux,certificates,https] #TAG names should always be lowercase
 ---
 
 # How to create an SSL certificate in Linux
@@ -13,7 +13,7 @@ I use this every time I need to create a certificate signing request (CSR), for 
 
 I copy the code below into a new file, named for the server/service I am creating the CSR for.
 
-```
+```bash
 [req]
 [req]
 distinguished_name = req_distinguished_name
@@ -80,4 +80,3 @@ X509v3 Subject Alternative Name:
 ```
 ---
 And that's it. Go ahead and use that CSR to generate a certificate with your CA and then use the certificate and key (that you generated) to install onto a server or service.
-
