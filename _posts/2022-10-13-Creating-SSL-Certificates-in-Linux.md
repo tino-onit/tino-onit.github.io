@@ -40,13 +40,12 @@ DNS.2 = server01b.example.com
 
 Next, use `openssl` to generate the CSR and KEY pair, using the config file
 
-```bash
+```
 openssl req -new -config server01-san_cert.cnf -out server01_cert.csr -keyout server01-priv.key
 ```
 
 You should get prompted for the certificate information, like below
-
-```
+```bash
 Generating a RSA private key
 .............................................................+++++
 ...+++++
@@ -74,11 +73,11 @@ That will generate your certificate and key pair, which in our example should be
 >server01-priv.key
 
 Next, we can verify that the CSR contains the alternate names we configured by running the following
-
-```bash
+```
 openssl req -noout -text -in server01_cert.csr | grep -A 1 "Subject Alternative Name"
 X509v3 Subject Alternative Name:
     IP Address:10.1.1.1, IP Address:10.1.1.2, IP Address:10.1.1.3, DNS:server01a.example.com, DNS:server01b.example.com
 ```
+---
 And that's it. Go ahead and use that CSR to generate a certificate with your CA and then use the certificate and key (that you generated) to install onto a server or service.
 
