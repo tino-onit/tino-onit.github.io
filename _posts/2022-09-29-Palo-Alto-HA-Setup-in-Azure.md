@@ -4,10 +4,6 @@ date: 2022-09-29 10:00:00 -700
 categories: [cloud, paloalto, firewall]
 tags: [cloud, azure, vnet, firewall, paloalto, ha]    #TAG names should always be lowercase
 ---
-https://www.azure-heros.com/blog/set-up-activepassive-palo-alto-datacenter-firewall-on-azure-part-one
-https://www.azure-heros.com/blog/set-up-activepassive-palo-alto-datacenter-firewall-on-azure-part-two
-https://www.azure-heros.com/blog/set-up-activepassive-palo-alto-datacenter-firewall-on-azure-part-three
-
 # Deploy HA Palo Alto Firewalls on Azure
 
 The below design explaining Microsoft best practices for deploying resources across Subscriptions and VNETs
