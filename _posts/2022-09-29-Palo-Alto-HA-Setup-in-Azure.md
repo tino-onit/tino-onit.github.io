@@ -61,7 +61,7 @@ There is a small configuration should be done on azure AD before jumping into th
 10. Go to Home > Subscriptions
 11. Access Control (IAM) > +Add > Add Role Assignment
 12. Select Contributor Role  and from Select > select the App name
-13. Lastely, you'll need to goto your firewall and copy the settings to the VM-Series plug-in
+13. Lastly, you'll need to go to your firewall and copy the settings to the VM-Series plug-in
 ![PANW vm-series plug-in](https://i.imgur.com/3IVkVOF.png)
 
 Now We will Add the new Floating IP on the Node 1
@@ -75,7 +75,7 @@ Now We will Add the new Floating IP on the Node 1
 > Note: With floating IP address, it can quickly move the IP address from the active firewall to the passive firewall during failover. You will also need HA links – a control link and data link to synchronize data and maintain state information between the peers for the passive firewall to seamlessly secure traffic as soon as it becomes the active peer.
 
 Here you can see what the floating IP (and additional public IPs) look like from the Azure side.
-![Imgur](https://i.imgur.com/L8FgbtY.png)
+![Azure PANW firewall interface](https://i.imgur.com/L8FgbtY.png)
 
 Next Step is to Login to Palo Alto Firewall and start the initial configuration and it will be the last Part
 

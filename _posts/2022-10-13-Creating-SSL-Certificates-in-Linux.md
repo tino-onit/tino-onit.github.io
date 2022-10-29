@@ -1,11 +1,11 @@
 ---
-title: "How to create an SSL certificate in Linux"
+title: "How to create a SAN certificate with openssl"
 date: 2022-10-13 10:00:00 -700
-categories: [ssl,linux]
-tags: [ssl,linux,certificates,https] #TAG names should always be lowercase
+categories: [ssl, linux]
+tags: [ssl, linux, certificates, https, openssl]    #TAG names should always be lowercase
 ---
 
-# How to create an SSL certificate in Linux
+# How to create a SAN certificate with openssl
 
 I use this every time I need to create a certificate signing request (CSR), for single-name certificates or SAN certificates.
 
