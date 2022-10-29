@@ -36,7 +36,6 @@ DNS.1 = server01a.example.com
 DNS.2 = server01b.example.com
 ```
 
-Next, use `openssl` to generate the CSR and KEY pair, using the config file
-```
-openssl req -new -config server01-san_cert.cnf -out server01_cert.csr -keyout server01-priv.key
-```
+Next, use __openssl__ to generate the CSR and KEY pair, using the config file
+
+`openssl req -new -config server01-san_cert.cnf -out server01_cert.csr -keyout server01-priv.key`
