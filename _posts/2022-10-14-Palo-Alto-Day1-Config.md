@@ -13,7 +13,7 @@ tags: [network, firewall, paloalto, config] #TAG names should always be lowercas
 
 Instead of extensive and detailed "how-to" documentation, Day 1 Configuration templates provide an easy-to-implement configuration model that is use case agnostic. The emphasis is on key security elements, such as: dynamic updates, security profiles, rules, and logging that should be consistent across deployments.
 
-## Why Use Day 1 Configuration Templates?
+## Why Use Day 1 Configuration Templates?--------------------
 
 Day 1 configuration templates play use common best practice recommendations and compiles them into pre-built Day 1 Configuration templates. These templates can then be loaded into Panorama or a next-generation firewall. Benefits of Day 1 Configuration templates include:
 
@@ -28,10 +28,10 @@ Additionally, you can read more about the configuration [here, at the IronSkille
 
 > If you already have a NGFW deployed but still want to take advantage of the various pieces of configuration, like the various Security Profiles, then below I have the code snippets I use 
 
-Custom URL Category Profiles
-===
+## Custom URL Category Profiles
+---
 ```bash
-# ========== Custome URL categories I typycally use
+# -------------------- Custome URL categories I typycally use
 set profiles custom-url-category Allow-URL-List type "URL List"
 set profiles custom-url-category Allow-URL-List list [ *.paloaltonetworks.com/ ]
 set profiles custom-url-category Block-URL-List type "URL List"
@@ -42,10 +42,10 @@ set profiles custom-url-category Custom-No-Decrypt-Expired type "URL List"
 set profiles custom-url-category Custom-No-Decrypt type "URL List"
 set profiles custom-url-category Allow-URL-Geo-Exception type "URL List"
 ```
-Decryption Profiles
-===
+## Decryption Profiles
+---
 ```bash
-# ========== Default Decryption
+# -------------------- Default Decryption
 set profiles decryption Decryption_Profile ssl-forward-proxy block-expired-certificate yes
 set profiles decryption Decryption_Profile ssl-forward-proxy block-untrusted-issuer yes
 set profiles decryption Decryption_Profile ssl-forward-proxy block-unknown-cert yes
@@ -63,7 +63,7 @@ set profiles decryption Decryption_Profile ssl-protocol-settings max-version max
 set profiles decryption Decryption_Profile ssl-protocol-settings keyxchg-algo-rsa no
 set profiles decryption Decryption_Profile ssl-protocol-settings enc-algo-3des no
 set profiles decryption Decryption_Profile ssl-protocol-settings enc-algo-rc4 no
-# ========== If Expired SSL
+# -------------------- If Expired SSL
 set profiles decryption Decryption_Profile ssl-protocol-settings auth-algo-sha1 no
 set profiles decryption Decryption_Profile-Expired ssl-forward-proxy block-expired-certificate yes
 set profiles decryption Decryption_Profile-Expired ssl-forward-proxy block-untrusted-issuer yes
@@ -84,10 +84,10 @@ set profiles decryption Decryption_Profile-Expired ssl-protocol-settings enc-alg
 set profiles decryption Decryption_Profile-Expired ssl-protocol-settings enc-algo-rc4 no
 set profiles decryption Decryption_Profile-Expired ssl-protocol-settings auth-algo-sha1 yes
 ```
-Antivirus Profiles
-===
+## Antivirus Profiles
+---
 ```bash
-# ========== Alert-Only
+# -------------------- Alert-Only
 set profiles virus Alert-Only-AV decoder ftp action alert
 set profiles virus Alert-Only-AV decoder ftp wildfire-action alert
 set profiles virus Alert-Only-AV decoder ftp mlav-action alert
@@ -112,7 +112,7 @@ set profiles virus Alert-Only-AV decoder smtp mlav-action alert
 set profiles virus Alert-Only-AV mlav-engine-filebased-enabled "Windows Executables" mlav-policy-action enable(alert-only)
 set profiles virus Alert-Only-AV mlav-engine-filebased-enabled "PowerShell Script 1" mlav-policy-action enable(alert-only)
 set profiles virus Alert-Only-AV mlav-engine-filebased-enabled "PowerShell Script 2" mlav-policy-action enable(alert-only)
-# ========== Outbound
+# -------------------- Outbound
 set profiles virus Outbound-AV decoder ftp action reset-both
 set profiles virus Outbound-AV decoder ftp wildfire-action reset-both
 set profiles virus Outbound-AV decoder ftp mlav-action reset-both
@@ -137,7 +137,7 @@ set profiles virus Outbound-AV decoder smtp mlav-action reset-both
 set profiles virus Outbound-AV mlav-engine-filebased-enabled "Windows Executables" mlav-policy-action enable
 set profiles virus Outbound-AV mlav-engine-filebased-enabled "PowerShell Script 1" mlav-policy-action enable
 set profiles virus Outbound-AV mlav-engine-filebased-enabled "PowerShell Script 2" mlav-policy-action enable
-# ========== Inbound
+# -------------------- Inbound
 set profiles virus Inbound-AV decoder ftp action reset-both
 set profiles virus Inbound-AV decoder ftp wildfire-action reset-both
 set profiles virus Inbound-AV decoder ftp mlav-action reset-both
@@ -162,7 +162,7 @@ set profiles virus Inbound-AV decoder smtp mlav-action reset-both
 set profiles virus Inbound-AV mlav-engine-filebased-enabled "Windows Executables" mlav-policy-action enable
 set profiles virus Inbound-AV mlav-engine-filebased-enabled "PowerShell Script 1" mlav-policy-action enable
 set profiles virus Inbound-AV mlav-engine-filebased-enabled "PowerShell Script 2" mlav-policy-action enable
-# ========== Internal
+# -------------------- Internal
 set profiles virus Internal-AV decoder ftp action reset-both
 set profiles virus Internal-AV decoder ftp wildfire-action reset-both
 set profiles virus Internal-AV decoder ftp mlav-action reset-both
@@ -187,7 +187,7 @@ set profiles virus Internal-AV decoder smtp mlav-action reset-both
 set profiles virus Internal-AV mlav-engine-filebased-enabled "Windows Executables" mlav-policy-action enable
 set profiles virus Internal-AV mlav-engine-filebased-enabled "PowerShell Script 1" mlav-policy-action enable
 set profiles virus Internal-AV mlav-engine-filebased-enabled "PowerShell Script 2" mlav-policy-action enable
-# ========== Exception
+# -------------------- Exception
 set profiles virus Exception-AV decoder ftp action reset-both
 set profiles virus Exception-AV decoder ftp wildfire-action reset-both
 set profiles virus Exception-AV decoder ftp mlav-action reset-both
@@ -214,10 +214,10 @@ set profiles virus Exception-AV mlav-engine-filebased-enabled "PowerShell Script
 set profiles virus Exception-AV mlav-engine-filebased-enabled "PowerShell Script 2" mlav-policy-action enable
 set profiles virus Exception-AV description "Use this profile for rules needing modifications to the standard"
 ```
-Anti-spyware Profiles
-===
+## Anti-spyware Profiles
+---
 ```bash
-# ========== Outbound
+# -------------------- Outbound
 set profiles spyware Outbound-AS botnet-domains lists default-paloalto-dns action sinkhole
 set profiles spyware Outbound-AS botnet-domains lists default-paloalto-dns packet-capture disable
 set profiles spyware Outbound-AS botnet-domains dns-security-categories pan-dns-sec-adtracking log-level default
@@ -260,7 +260,7 @@ set profiles spyware Outbound-AS rules Default-Low-Info severity [ low informati
 set profiles spyware Outbound-AS rules Default-Low-Info threat-name any
 set profiles spyware Outbound-AS rules Default-Low-Info category any
 set profiles spyware Outbound-AS rules Default-Low-Info packet-capture disable
-# ========== Inbound
+# -------------------- Inbound
 set profiles spyware Inbound-AS botnet-domains lists default-paloalto-dns action sinkhole
 set profiles spyware Inbound-AS botnet-domains lists default-paloalto-dns packet-capture disable
 set profiles spyware Inbound-AS botnet-domains dns-security-categories pan-dns-sec-cc log-level default
@@ -299,7 +299,7 @@ set profiles spyware Inbound-AS rules Default-Low-Info severity [ low informatio
 set profiles spyware Inbound-AS rules Default-Low-Info threat-name any
 set profiles spyware Inbound-AS rules Default-Low-Info category any
 set profiles spyware Inbound-AS rules Default-Low-Info packet-capture disable
-# ========== Internal
+# -------------------- Internal
 set profiles spyware Internal-AS botnet-domains lists default-paloalto-dns action sinkhole
 set profiles spyware Internal-AS botnet-domains lists default-paloalto-dns packet-capture disable
 set profiles spyware Internal-AS botnet-domains dns-security-categories pan-dns-sec-cc log-level default
@@ -338,7 +338,7 @@ set profiles spyware Internal-AS rules Default-Medium-Low-Info severity [ medium
 set profiles spyware Internal-AS rules Default-Medium-Low-Info threat-name any
 set profiles spyware Internal-AS rules Default-Medium-Low-Info category any
 set profiles spyware Internal-AS rules Default-Medium-Low-Info packet-capture disable
-# ========== Alert-Only
+# -------------------- Alert-Only
 set profiles spyware Alert-Only-AS botnet-domains lists default-paloalto-dns action alert
 set profiles spyware Alert-Only-AS botnet-domains lists default-paloalto-dns packet-capture disable
 set profiles spyware Alert-Only-AS botnet-domains dns-security-categories pan-dns-sec-cc log-level default
@@ -372,7 +372,7 @@ set profiles spyware Alert-Only-AS rules Alert-All severity any
 set profiles spyware Alert-Only-AS rules Alert-All threat-name any
 set profiles spyware Alert-Only-AS rules Alert-All category any
 set profiles spyware Alert-Only-AS rules Alert-All packet-capture disable
-# ========== Exception
+# -------------------- Exception
 set profiles spyware Exception-AS description "Used for exception cases not part of the recommended practice"
 set profiles spyware Exception-AS botnet-domains lists default-paloalto-dns packet-capture single-packet
 set profiles spyware Exception-AS botnet-domains lists default-paloalto-dns action sinkhole
@@ -394,10 +394,10 @@ set profiles spyware Exception-AS botnet-domains dns-security-categories pan-dns
 set profiles spyware Exception-AS botnet-domains sinkhole ipv4-address 72.5.65.111
 set profiles spyware Exception-AS botnet-domains sinkhole ipv6-address 2600:5200::1
 ```
-Vulnerability
-===
+## Vulnerability
+---
 ```bash
-# ========== Outbound
+# -------------------- Outbound
 set profiles vulnerability Outbound-VP rules Block-Critical-High-Medium action reset-both
 set profiles vulnerability Outbound-VP rules Block-Critical-High-Medium vendor-id any
 set profiles vulnerability Outbound-VP rules Block-Critical-High-Medium severity [ critical high medium ]
@@ -415,7 +415,7 @@ set profiles vulnerability Outbound-VP rules Default-Low-Info host any
 set profiles vulnerability Outbound-VP rules Default-Low-Info category any
 set profiles vulnerability Outbound-VP rules Default-Low-Info packet-capture disable
 set profiles vulnerability Outbound-VP threat-exception 35223 action default
-# ========== Inbound
+# -------------------- Inbound
 set profiles vulnerability Inbound-VP rules Block-Critical-High-Medium action reset-both
 set profiles vulnerability Inbound-VP rules Block-Critical-High-Medium vendor-id any
 set profiles vulnerability Inbound-VP rules Block-Critical-High-Medium severity [ critical high medium ]
@@ -432,7 +432,7 @@ set profiles vulnerability Inbound-VP rules Default-Low-Info threat-name any
 set profiles vulnerability Inbound-VP rules Default-Low-Info host any
 set profiles vulnerability Inbound-VP rules Default-Low-Info category any
 set profiles vulnerability Inbound-VP rules Default-Low-Info packet-capture disable
-# ========== Internal
+# -------------------- Internal
 set profiles vulnerability Internal-VP rules Block-Critical-High action reset-both
 set profiles vulnerability Internal-VP rules Block-Critical-High vendor-id any
 set profiles vulnerability Internal-VP rules Block-Critical-High severity [ critical high ]
@@ -451,7 +451,7 @@ set profiles vulnerability Internal-VP rules Default-Medium-Low-Info category an
 set profiles vulnerability Internal-VP rules Default-Medium-Low-Info packet-capture disable
 set profiles vulnerability Internal-VP threat-exception 35223 action default
 set profiles vulnerability Internal-VP threat-exception 59323 action allow
-# ========== Alert-Only
+# -------------------- Alert-Only
 set profiles vulnerability Alert-Only-VP rules Alert-All action alert
 set profiles vulnerability Alert-Only-VP rules Alert-All vendor-id any
 set profiles vulnerability Alert-Only-VP rules Alert-All severity any
@@ -461,13 +461,13 @@ set profiles vulnerability Alert-Only-VP rules Alert-All host any
 set profiles vulnerability Alert-Only-VP rules Alert-All category any
 set profiles vulnerability Alert-Only-VP rules Alert-All packet-capture disable
 set profiles vulnerability Alert-Only-VP threat-exception 59323 action allow
-# ========== Exception
+# -------------------- Exception
 set profiles vulnerability Exception-VP
 ```
-File-Blocking Profiles
-===
+## File-Blocking Profiles
+---
 ```bash
-# ========== Outbound
+# -------------------- Outbound
 set profiles file-blocking Outbound-FB rules Alert-All application any
 set profiles file-blocking Outbound-FB rules Alert-All direction both
 set profiles file-blocking Outbound-FB rules Alert-All action alert
@@ -476,7 +476,7 @@ set profiles file-blocking Outbound-FB rules Block application any
 set profiles file-blocking Outbound-FB rules Block direction both
 set profiles file-blocking Outbound-FB rules Block action block
 set profiles file-blocking Outbound-FB rules Block file-type [ 7z bat chm class cpl dll hlp hta jar ocx pif scr torrent vbe wsf ]
-# ========== Inbound
+# -------------------- Inbound
 set profiles file-blocking Inbound-FB rules Alert-All application any
 set profiles file-blocking Inbound-FB rules Alert-All direction both
 set profiles file-blocking Inbound-FB rules Alert-All action alert
@@ -493,23 +493,23 @@ set profiles file-blocking Internal-FB rules Block application any
 set profiles file-blocking Internal-FB rules Block direction both
 set profiles file-blocking Internal-FB rules Block action block
 set profiles file-blocking Internal-FB rules Block file-type [ 7z bat chm class cpl hlp hta jar ocx pif scr torrent vbe wsf ]
-# ========== Alert-Only
+# -------------------- Alert-Only
 set profiles file-blocking Alert-Only-FB rules Alert-Only application any
 set profiles file-blocking Alert-Only-FB rules Alert-Only direction both
 set profiles file-blocking Alert-Only-FB rules Alert-Only action alert
 set profiles file-blocking Alert-Only-FB rules Alert-Only file-type any
 ```
-URL Filtering Profiles
-===
+## URL Filtering Profiles
+---
 ```bash
-# ========== Alert-Only
+# -------------------- Alert-Only
 set profiles url-filtering Alert-Only-URL credential-enforcement mode ip-user
 set profiles url-filtering Alert-Only-URL credential-enforcement log-severity medium
 set profiles url-filtering Alert-Only-URL credential-enforcement alert [ Allow-URL-Geo-Exception Allow-URL-List Block-URL-List Custom-Decrypt Custom-No-Decrypt Custom-No-Decrypt-Expired "Palo Alto Networks - Microsoft 365 URL List" abortion abused-drugs adult alcohol-and-tobacco auctions business-and-economy command-and-control computer-and-internet-info content-delivery-networks copyright-infringement cryptocurrency dating dynamic-dns educational-institutions entertainment-and-arts extremism financial-services gambling games government grayware hacking health-and-medicine high-risk home-and-garden hunting-and-fishing insufficient-content internet-communications-and-telephony internet-portals job-search legal low-risk malware medium-risk military motor-vehicles music newly-registered-domain news not-resolved nudity online-storage-and-backup parked peer-to-peer personal-sites-and-blogs philosophy-and-political-advocacy phishing private-ip-addresses proxy-avoidance-and-anonymizers questionable ransomware real-estate real-time-detection recreation-and-hobbies reference-and-research religion search-engines sex-education shareware-and-freeware shopping social-networking society sports stock-advice-and-tools streaming-media swimsuits-and-intimate-apparel training-and-tools translation travel unknown weapons web-advertisements web-based-email web-hosting ]
 set profiles url-filtering Alert-Only-URL mlav-engine-urlbased-enabled "Javascript Exploit Detection" mlav-policy-action alert
 set profiles url-filtering Alert-Only-URL mlav-engine-urlbased-enabled "Phishing Detection" mlav-policy-action alert
 set profiles url-filtering Alert-Only-URL alert [ Allow-URL-Geo-Exception Allow-URL-List Block-URL-List Custom-Decrypt Custom-No-Decrypt Custom-No-Decrypt-Expired "Palo Alto Networks - Microsoft 365 URL List" abortion abused-drugs adult alcohol-and-tobacco auctions business-and-economy command-and-control computer-and-internet-info content-delivery-networks copyright-infringement cryptocurrency dating dynamic-dns educational-institutions entertainment-and-arts extremism financial-services gambling games government grayware hacking health-and-medicine high-risk home-and-garden hunting-and-fishing insufficient-content internet-communications-and-telephony internet-portals job-search legal low-risk malware medium-risk military motor-vehicles music newly-registered-domain news not-resolved nudity online-storage-and-backup parked peer-to-peer personal-sites-and-blogs philosophy-and-political-advocacy phishing private-ip-addresses proxy-avoidance-and-anonymizers questionable ransomware real-estate real-time-detection recreation-and-hobbies reference-and-research religion search-engines sex-education shareware-and-freeware shopping social-networking society sports stock-advice-and-tools streaming-media swimsuits-and-intimate-apparel training-and-tools translation travel unknown weapons web-advertisements web-based-email web-hosting ]
-# ========== Exceptions
+# -------------------- Exceptions
 set profiles url-filtering Exception-URL credential-enforcement mode ip-user
 set profiles url-filtering Exception-URL credential-enforcement log-severity high
 set profiles url-filtering Exception-URL credential-enforcement alert real-time-detection
@@ -521,7 +521,7 @@ set profiles url-filtering Exception-URL mlav-engine-urlbased-enabled "Javascrip
 set profiles url-filtering Exception-URL mlav-engine-urlbased-enabled "Phishing Detection" mlav-policy-action block
 set profiles url-filtering Exception-URL alert [ Allow-URL-Geo-Exception Allow-URL-List Custom-Decrypt Custom-No-Decrypt Custom-No-Decrypt-Expired "Palo Alto Networks - Microsoft 365 URL List" abortion abused-drugs adult alcohol-and-tobacco auctions business-and-economy computer-and-internet-info content-delivery-networks copyright-infringement cryptocurrency dating dynamic-dns educational-institutions entertainment-and-arts extremism financial-services gambling games government hacking health-and-medicine high-risk home-and-garden hunting-and-fishing insufficient-content internet-communications-and-telephony internet-portals job-search legal low-risk medium-risk military motor-vehicles music newly-registered-domain news not-resolved nudity online-storage-and-backup parked peer-to-peer personal-sites-and-blogs philosophy-and-political-advocacy private-ip-addresses proxy-avoidance-and-anonymizers questionable real-estate real-time-detection recreation-and-hobbies reference-and-research religion search-engines sex-education shareware-and-freeware shopping social-networking society sports stock-advice-and-tools streaming-media swimsuits-and-intimate-apparel training-and-tools translation travel unknown weapons web-advertisements web-based-email web-hosting ]
 set profiles url-filtering Exception-URL block [ Block-URL-List command-and-control grayware malware phishing ransomware ]
-# ========== Outbound
+# -------------------- Outbound
 set profiles url-filtering Outbound-URL credential-enforcement mode ip-user
 set profiles url-filtering Outbound-URL credential-enforcement log-severity high
 set profiles url-filtering Outbound-URL credential-enforcement alert [ Allow-URL-Geo-Exception Allow-URL-List Custom-Decrypt Custom-No-Decrypt Custom-No-Decrypt-Expired "Palo Alto Networks - Microsoft 365 URL List" alcohol-and-tobacco auctions business-and-economy computer-and-internet-info content-delivery-networks educational-institutions entertainment-and-arts financial-services government health-and-medicine home-and-garden hunting-and-fishing insufficient-content internet-communications-and-telephony internet-portals job-search legal low-risk medium-risk military motor-vehicles music news online-storage-and-backup personal-sites-and-blogs philosophy-and-political-advocacy private-ip-addresses real-estate real-time-detection recreation-and-hobbies reference-and-research religion search-engines shopping social-networking society sports stock-advice-and-tools streaming-media training-and-tools translation travel weapons web-advertisements web-based-email web-hosting ]
@@ -550,61 +550,61 @@ set profiles url-filtering Outbound-URL-IT alert [ Allow-URL-Geo-Exception Allow
 set profiles url-filtering Outbound-URL-IT block [ Block-URL-List abused-drugs adult command-and-control copyright-infringement cryptocurrency dating dynamic-dns extremism grayware hacking high-risk malware not-resolved nudity peer-to-peer phishing proxy-avoidance-and-anonymizers ransomware ]
 set profiles url-filtering Outbound-URL-IT continue [ abortion gambling newly-registered-domain parked questionable sex-education swimsuits-and-intimate-apparel unknown ]
 ```
-Wildfire
-===
+## Wildfire
+---
 ```bash
-# ========== Outbound
+# -------------------- Outbound
 set profiles wildfire-analysis Outbound-WF rules Forward-All application any
 set profiles wildfire-analysis Outbound-WF rules Forward-All direction both
 set profiles wildfire-analysis Outbound-WF rules Forward-All analysis public-cloud
 set profiles wildfire-analysis Outbound-WF rules Forward-All file-type any
-# ========== Inbound
+# -------------------- Inbound
 set profiles wildfire-analysis Inbound-WF rules Forward-All application any
 set profiles wildfire-analysis Inbound-WF rules Forward-All direction both
 set profiles wildfire-analysis Inbound-WF rules Forward-All analysis public-cloud
 set profiles wildfire-analysis Inbound-WF rules Forward-All file-type any
-# ========== Internal
+# -------------------- Internal
 set profiles wildfire-analysis Internal-WF rules Forward-All application any
 set profiles wildfire-analysis Internal-WF rules Forward-All direction both
 set profiles wildfire-analysis Internal-WF rules Forward-All analysis public-cloud
 set profiles wildfire-analysis Internal-WF rules Forward-All file-type any
-# ========== Alert-Only
+# -------------------- Alert-Only
 set profiles wildfire-analysis Alert-Only-WF rules Forward-All application any
 set profiles wildfire-analysis Alert-Only-WF rules Forward-All direction both
 set profiles wildfire-analysis Alert-Only-WF rules Forward-All analysis public-cloud
 set profiles wildfire-analysis Alert-Only-WF rules Forward-All file-type any
 ```
 
-Security Profile Groups
-===
+## Security Profile Groups
+---
 ```bash
-# ========== Outbound
+# -------------------- Outbound
 set profile-group Outbound-SPG virus Outbound-AV
 set profile-group Outbound-SPG spyware Outbound-AS
 set profile-group Outbound-SPG vulnerability Outbound-VP
 set profile-group Outbound-SPG url-filtering Outbound-URL
 set profile-group Outbound-SPG file-blocking Outbound-FB
 set profile-group Outbound-SPG wildfire-analysis Outbound-WF
-# ========== Inbound
+# -------------------- Inbound
 set profile-group Inbound-SPG virus Inbound-AV
 set profile-group Inbound-SPG spyware Inbound-AS
 set profile-group Inbound-SPG vulnerability Inbound-VP
 set profile-group Inbound-SPG file-blocking Inbound-FB
 set profile-group Inbound-SPG wildfire-analysis Inbound-WF
-# ========== Internal
+# -------------------- Internal
 set profile-group Internal-SPG virus Internal-AV
 set profile-group Internal-SPG spyware Internal-AS
 set profile-group Internal-SPG vulnerability Internal-VP
 set profile-group Internal-SPG file-blocking Internal-FB
 set profile-group Internal-SPG wildfire-analysis Internal-WF
-# ========== Alert-Only
+# -------------------- Alert-Only
 set profile-group Alert-Only-SPG virus Alert-Only-AV
 set profile-group Alert-Only-SPG spyware Alert-Only-AS
 set profile-group Alert-Only-SPG vulnerability Alert-Only-VP
 set profile-group Alert-Only-SPG url-filtering Alert-Only-URL
 set profile-group Alert-Only-SPG file-blocking Alert-Only-FB
 set profile-group Alert-Only-SPG wildfire-analysis Alert-Only-WF
-# ========== Default
+# -------------------- Default
 set profile-group default-SPG virus Outbound-AV
 set profile-group default-SPG spyware Outbound-AS
 set profile-group default-SPG vulnerability Outbound-VP
@@ -613,10 +613,10 @@ set profile-group default-SPG file-blocking Outbound-FB
 set profile-group default-SPG wildfire-analysis Outbound-WF
 ```
 
-Network Profiles
-===
+## Network Profiles
+---
 ```bash
-# ========== Zone Protection
+# -------------------- Zone Protection
 set network profiles zone-protection-profile Recommended_Zone_Protection flood tcp-syn enable yes
 set network profiles zone-protection-profile Recommended_Zone_Protection flood tcp-syn syn-cookies alarm-rate 10000
 set network profiles zone-protection-profile Recommended_Zone_Protection flood tcp-syn syn-cookies activate-rate 10000
@@ -654,10 +654,10 @@ set network profiles zone-protection-profile Recommended_Zone_Protection strip-m
 set network profiles zone-protection-profile Recommended_Zone_Protection discard-unknown-option yes
 set network profiles zone-protection-profile Recommended_Zone_Protection scan-white-list RFC1918-10.0.0.0-8 ipv4 10.0.0.0/8
 ```
-System Config
-===
+## System Config
+---
 ```bash
-# ========== Various system configuration bits
+# -------------------- Various system configuration bits
 set deviceconfig system device-telemetry device-health-performance yes
 set deviceconfig system device-telemetry product-usage yes
 set deviceconfig system device-telemetry threat-prevention yes
@@ -683,10 +683,11 @@ set mgt-config password-complexity block-username-inclusion yes
 set mgt-config password-complexity password-history-count 24
 set mgt-config password-complexity new-password-differs-by-characters 3
 ```
-Log settings
-===
+## Log settings
+---  
+
 ```bash
-# ========== Default Logging setting
+# -------------------- Default Logging setting
 set shared log-settings syslog Sample_Syslog_Profile server Sample_Syslog transport UDP
 set shared log-settings syslog Sample_Syslog_Profile server Sample_Syslog port 514
 set shared log-settings syslog Sample_Syslog_Profile server Sample_Syslog format BSD

@@ -44,6 +44,8 @@ As we can see from the below NICs Configuration on my Palo Alto Nodes, we have:
 - MGMT Interface
 - HA-Interface - Make sure to Power off and stop the VM in order to add this new NIC.
 
+## Azure Application Registration
+---
 There is a small configuration should be done on azure AD before jumping into the Palo Alto HA Configuration, which is creating an APP and register with the right permission in order to make the Resources "IP" floating between both Firewall Nodes, let's do it:
 1. Login to Azure Portal
 2. Click on Azure AD
@@ -60,7 +62,9 @@ There is a small configuration should be done on azure AD before jumping into th
 13. Lastly, you'll need to go to your firewall and copy the settings to the VM-Series plug-in
 ![PANW vm-series plug-in](https://i.imgur.com/3IVkVOF.png)
 
-Now We will Add the new Floating IP on the Node 1
+## Azure VM-Series Interface Config
+---
+Now we will Add the new Floating IP on the Node 1
 1. Go to the Palo Alto VM Node 1 > Select Networking
 2. You will see the 4 Network interfaces which we have added before
 3. Click on the Untrust "Second NIC" > a new windows will open
@@ -73,6 +77,8 @@ Now We will Add the new Floating IP on the Node 1
 Here you can see what the floating IP (and additional public IPs) look like from the Azure side.
 ![Azure PANW firewall interface](https://i.imgur.com/L8FgbtY.png)
 
+## VM-Series Configuration
+---
 Next Step is to Login to Palo Alto Firewall and start the initial configuration and it will be the last Part
 
 1. Login to 1st Palo Alto Firewall using the public IP or DNS name
@@ -90,7 +96,8 @@ Below is an example:
 ![PANW Virtual Router](https://i.imgur.com/zgREi1t.png)
 8. At this point, you are ready to add new Policies and Objects to your firewalls, using the Device Groups tabs in Panorama, and configure more Network and Device settings using the Templates tabs. 
 
-
+## Routing Issue, Inside Azure
+---
 One thing to note, in my case, the firewall was not routing traffic to my branch sites (via 10.90.1.10, as seen in the route table above). This is was a result of the firewall not being able to arp for the MAC address of that next-hop  
 ![PANW ARP table, before](https://i.imgur.com/CwDH8ty.png)
 
@@ -103,7 +110,7 @@ Then it will be displayed in the firewalls ARP table and the firewall will forwa
 > Note: The MAC address is ``` 12:34:56:78:9a:bc ``` which is the same as the other interface. It's a cloud (Azure) thing
 
 ## To finish this off, here you will see what the various Azure route tables look like
-
+---
 Transit Firewall Trust route table
 ![Azure Trust RT](https://i.imgur.com/rwsCtO7.png)
 Transit Firewall UnTrust route table
