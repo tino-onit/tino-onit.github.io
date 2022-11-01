@@ -21,9 +21,9 @@ timezone: America/Los_Angeles
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Is Internet working?                         # the main title
+title: Is the Internet working?                         # the main title
 
-tagline: You should check DNS... please check dns   # it will display as the sub-title
+tagline: You should check DNS... or Certs   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   Various tidbits of information I use over and over

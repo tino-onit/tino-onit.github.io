@@ -13,7 +13,7 @@ read more :[ ​https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/
 The below link is the Palo Alto documentation  
 read more :[ https://docs.paloaltonetworks.com/vm-series/9-1/vm-series-deployment/set-up-the-vm-series-firewall-on-azure/configure-activepassive-ha-for-vm-series-firewall-on-azure](https://docs.paloaltonetworks.com/vm-series/9-1/vm-series-deployment/set-up-the-vm-series-firewall-on-azure/configure-activepassive-ha-for-vm-series-firewall-on-azure)
 
-### Assumptions and Prerequisites:
+## Assumptions and Prerequisites:
 - A valid active subscription.
 - A dedicated resource group.
 - This design uses IPv4 IP addressing. IPv6 is available but is not covered.
@@ -21,7 +21,8 @@ read more :[ https://docs.paloaltonetworks.com/vm-series/9-1/vm-series-deploymen
 - Licenses for primary and secondary - if used - Palo Alto firewalls.
     - Although not really needed, since you can see traffic in the monitor tab without a license in > 10.1.x PanOS.
 
-### Virtual Network
+## VNET Setup
+---
 I have Created two VNETs - You can use one subscription or multiple
 
 - VNET-HUB - Also known as Transit 
@@ -31,8 +32,10 @@ I deployed via ARM template - which is the easiest way to launch two vm-series f
 
 [PANW ARM Template](https://github.com/PaloAltoNetworks/Azure-HA-Deployment)
 
-## Once you have both VM-Series firewalls created (and in the same RG) we can start to configure the Active and Passive Node from Azure side
+## Azure VM-Series HA Config
 ---
+Once you have both VM-Series firewalls created (and in the same RG) we can start to configure the Active and Passive Node from Azure side
+
 *Take a Look on the below design which is shared from the Palo Alto Portal, we will follow almost the same*
 
 ![PANW Network Diagram](https://i.imgur.com/YJbrN98.png)
@@ -42,11 +45,17 @@ As we can see from the below NICs Configuration on my Palo Alto Nodes, we have:
 - Trust Interface
 - Untrust Interface
 - MGMT Interface
-- HA-Interface - Make sure to Power off and stop the VM in order to add this new NIC.
+- HA-Interface
+
+In order to configure the HA interface, we need to create it. (This is assuming you have an HA subnet)
+1. Power off your VM's 
+2. Add a new NIC to each VM, in Azure, and assign it an IP in the HA subnet
+3. Power on the VM's and configure the new NIC == Ethernet1/3 == as DHCP
+4. Follow the Palo Alto guide on setting up HA
 
 ## Azure Application Registration
 ---
-There is a small configuration should be done on azure AD before jumping into the Palo Alto HA Configuration, which is creating an APP and register with the right permission in order to make the Resources "IP" floating between both Firewall Nodes, let's do it:
+Next task is creating an APP and registering it with the right permissions in order to make the resources "IP" floating between both Firewall Nodes. This is an Azure APP and we will use some of the output config to setup the VM-Series plug-in, inside out VM firewalls.
 1. Login to Azure Portal
 2. Click on Azure AD
 3. From App registration > Click on +New registration 
@@ -109,15 +118,22 @@ Then it will be displayed in the firewalls ARP table and the firewall will forwa
 
 > Note: The MAC address is ``` 12:34:56:78:9a:bc ``` which is the same as the other interface. It's a cloud (Azure) thing
 
-## To finish this off, here you will see what the various Azure route tables look like
+## Azure Route Tables
 ---
+To finish this off, here you will see what the various Azure route tables look like  
 Transit Firewall Trust route table
-![Azure Trust RT](https://i.imgur.com/rwsCtO7.png)
+![Azure Trust RT](https://i.imgur.com/rwsCtO7.png)  
+
 Transit Firewall UnTrust route table
-![Azure UnTrust RT](https://i.imgur.com/3ekmlkK.png)
-Spoke route table (applied to all spoke VNET subnets). Make note of the only UDR, 0.0.0.0/0 ==> FW trust floating IP
-![Azure Spoke RT](https://i.imgur.com/vZhmAIs.png)
-## Finally - if using SDWAN, other if you need to forward the traffic AFTER the firewall
+![Azure UnTrust RT](https://i.imgur.com/3ekmlkK.png)  
+
+Spoke route table (applied to all spoke VNET subnets). 
+Make note of the only UDR, 0.0.0.0/0 ==> FW trust floating IP
+![Azure Spoke RT](https://i.imgur.com/vZhmAIs.png)  
+
+## SDWAN Route Tables
+---
+If using SDWAN, other if you need to forward the traffic AFTER the firewall
 SDWAN Trust route table
 ![Azure SDWAN Trust RT](https://i.imgur.com/QIwqcoL.png)
 SDWAN UnTrust route table

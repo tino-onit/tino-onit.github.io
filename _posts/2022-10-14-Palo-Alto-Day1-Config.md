@@ -7,14 +7,16 @@ tags: [network, firewall, paloalto, config] #TAG names should always be lowercas
 # Palo Alto NGFW Day 1 Config
  I always like to the use Palo Alto's Day 1 configuration file for when setting up new firewalls. The below text is copied from the Palo Alto site. Using Palo Alto's config assessment feature, this should net a score of 60%.
 
-## What does Day 1 Configuration, and what are the advantages of running it?
+## What is Day 1 Config
+---
+What is a Day 1 Configuration, and what are the advantages of running it?
 
 - The Day 1 Configuration tool helps you configure your devices for threat prevention using best practice recommendations from Palo Alto Networks.
 
 Instead of extensive and detailed "how-to" documentation, Day 1 Configuration templates provide an easy-to-implement configuration model that is use case agnostic. The emphasis is on key security elements, such as: dynamic updates, security profiles, rules, and logging that should be consistent across deployments.
 
-## Why Use Day 1 Configuration Templates?--------------------
-
+## Why Use Day 1 Configuration Templates?
+---
 Day 1 configuration templates play use common best practice recommendations and compiles them into pre-built Day 1 Configuration templates. These templates can then be loaded into Panorama or a next-generation firewall. Benefits of Day 1 Configuration templates include:
 
 - Faster time to implement
@@ -28,6 +30,9 @@ Additionally, you can read more about the configuration [here, at the IronSkille
 
 > If you already have a NGFW deployed but still want to take advantage of the various pieces of configuration, like the various Security Profiles, then below I have the code snippets I use 
 
+# Individual Components
+
+I have broken down the _in my opinion_, nicely constructed security profiles. You can use these as a basis for your Outbound, Inbound, and Internal security policies. This also includes SSL decryptions profiles.
 ## Custom URL Category Profiles
 ---
 ```bash
