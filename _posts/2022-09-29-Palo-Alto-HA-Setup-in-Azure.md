@@ -1,19 +1,32 @@
 ---
-title: "How to setup HA Palo Alto vm-series and in a transit VNET"
+title: "How to setup Palo Alto VM-Series in a transit VNet"
 date: 2022-09-29 10:00:00 -700
 categories: [cloud, paloalto, firewall]
 tags: [cloud, azure, vnet, firewall, paloalto, ha]    #TAG names should always be lowercase
 ---
-# Deploy HA Palo Alto Firewalls on Azure
+# Palo Alto VM-Series Firewalls on Azure
+I recently completed a project where I deployed a pair of VM-Series firewalls, in an Active/Passive HA setup, on Azure using a "transit" VNet. A VNet on Azure is just a defined address space where you create subnets for NIC's to live in.  
 
-The below design explaining Microsoft best practices for deploying resources across Subscriptions and VNETs
+One of the caveats is that you have to be ok with 2min-5min of downtime (ie. no traverse traffic) while the Passive firewall transitions to Active. This is because - as you'll see below - this design uses a "floating IP" configured in Azure.  
 
-read more :[ ​https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-networking ](​https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-networking)
+This "floating IP" becomes the default gateway for egress and ingress traffic.
+```
+VNet (10.0.0.0/16)
+ │  
+ └─Subnet (10.0.1.0/24, 10.0.2.0/24, ect..)  
+    │  
+    └─NIC (10.0.1.10/24)  
+       │  
+       └─Security Group  
+```
+This link explains Microsoft best practices for deploying resources across Subscriptions and VNETs  
+[ ​https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-networking ](​https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-networking)
 
-The below link is the Palo Alto documentation  
-read more :[ https://docs.paloaltonetworks.com/vm-series/9-1/vm-series-deployment/set-up-the-vm-series-firewall-on-azure/configure-activepassive-ha-for-vm-series-firewall-on-azure](https://docs.paloaltonetworks.com/vm-series/9-1/vm-series-deployment/set-up-the-vm-series-firewall-on-azure/configure-activepassive-ha-for-vm-series-firewall-on-azure)
+This link is the Palo Alto documentation, on deploying VM-Series in Azure  
+[ https://docs.paloaltonetworks.com/vm-series/9-1/vm-series-deployment/set-up-the-vm-series-firewall-on-azure/configure-activepassive-ha-for-vm-series-firewall-on-azure](https://docs.paloaltonetworks.com/vm-series/9-1/vm-series-deployment/set-up-the-vm-series-firewall-on-azure/configure-activepassive-ha-for-vm-series-firewall-on-azure)
 
 ## Assumptions and Prerequisites:
+---
 - A valid active subscription.
 - A dedicated resource group.
 - This design uses IPv4 IP addressing. IPv6 is available but is not covered.
@@ -21,12 +34,12 @@ read more :[ https://docs.paloaltonetworks.com/vm-series/9-1/vm-series-deploymen
 - Licenses for primary and secondary - if used - Palo Alto firewalls.
     - Although not really needed, since you can see traffic in the monitor tab without a license in > 10.1.x PanOS.
 
-## VNET Setup
+## VNet Setup
 ---
 I have Created two VNETs - You can use one subscription or multiple
 
-- VNET-HUB - Also known as Transit 
-- VNET-SPOKE - Where your workloads will sit. Can also be a peered vnet, 3rd party or own.
+- VNet-HUB - Also known as Transit 
+- VNet-SPOKE - Where your workloads will sit. Can also be a peered vnet, 3rd party or own.
 
 I deployed via ARM template - which is the easiest way to launch two vm-series firewalls into the same RG (Resource Group). Otherwise, if launching one firewall at a time via the Marketplace, you can only put them in separate RG's (but I have a "trick" to this).
 
@@ -99,7 +112,7 @@ Next Step is to Login to Palo Alto Firewall and start the initial configuration 
 ![PANW UnTrust Interface IPs](https://i.imgur.com/692ajw3.png)
 6. Then you have to Add a Virtual Route between the Interfaces (trust and untrust)
     - DefaultRoute (0.0.0.0/0) interface Ethernet1/1 next-hop 10.250.16.1 (the gateway IP of your "untrust" subnet)
-    - To-Transit-VNET (10.250.16.0/20) interface Ethernet1/2 next-hop 10.250.17.1 (the gateway IP of your "trust" subnet)
+    - To-Transit-VNet (10.250.16.0/20) interface Ethernet1/2 next-hop 10.250.17.1 (the gateway IP of your "trust" subnet)
 7. You can add multiple  Static Route between your subnets  
 Below is an example:  
 ![PANW Virtual Router](https://i.imgur.com/zgREi1t.png)
@@ -127,7 +140,7 @@ Transit Firewall Trust route table
 Transit Firewall UnTrust route table
 ![Azure UnTrust RT](https://i.imgur.com/3ekmlkK.png)  
 
-Spoke route table (applied to all spoke VNET subnets). 
+Spoke route table (applied to all spoke VNet subnets). 
 Make note of the only UDR, 0.0.0.0/0 ==> FW trust floating IP
 ![Azure Spoke RT](https://i.imgur.com/vZhmAIs.png)  
 
