@@ -6,11 +6,11 @@ tags: [network, powershell, linux, cmd]    #TAG names should always be lowercase
 ---
 
 # Network Snippets
-#### Various snippets of code or one liners that I use often. Stuff that helps in day-2-day troubleshooting and whatnot.
+Various snippets of code or one liners that I use often. Stuff that helps in day-2-day troubleshooting and whatnot.
+
 ---
 
-
-### **Linux Commands**
+### Linux Commands
 
 | What | CMD | AltCMD |
 |----|----|----|
@@ -21,7 +21,7 @@ tags: [network, powershell, linux, cmd]    #TAG names should always be lowercase
 | Verify Route Table | netstat -rn | ip route |
 | Verify ARP Table | arp -an | ip neighbor |
 
-### **Windows Commands**
+### Windows Commands
 
 | What | CMD | |
 |----|----|----|
@@ -57,7 +57,7 @@ show ip int br | e unassigned|administratively
 
 ---
 ## Working with Git
-### Clone existing repo (remote, GitHub) to local server
+Clone existing repo (remote, GitHub) to local server
 ```console
 git clone git@<YOUR-USER-NAME>/<YOUR-REPO-NAME>.git
 ```
