@@ -67,4 +67,3 @@ echo '127.0.0.127 xml.cisco.com' >> /etc/hosts
 {: .nolineno }
 
 ### Additional
-This has worked well for me, as a baseline to getting an switch or router configured

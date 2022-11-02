@@ -9,23 +9,23 @@ tags: [linux, cmd, server]    #TAG names should always be lowercase
 
  This is something - which I've gathered from different resources - that I do whenever I setup a new Linux server or workstation. In general, this would work with any distribution but I mostly use Ubuntu and Debian (tomato/tomahto)
 
-### Get latest updates
+## Get latest updates
 
 ```bash
 sudo apt update && apt upgrade -y
 ```
-### Change Hostname
+## Change Hostname
 ```bash
 sudo hostnamectl set-hostname <HOSTNAME>
 # Also change hostname in /etc/hosts
 ```
 
-### Set time zone and time
+## Set time zone and time
 ```bash
 sudo timedatectyl set-timezone <TIMEZONE>
 ```
 
-### Install UFW and configure
+## Install UFW and configure
 Install latest version of UFW
 ```bash
 sudo apt install ufw
@@ -55,25 +55,25 @@ sudo ufw status
 sudo ufw app list | grep <APPLICATION>
 sudo ufw status numbered
 ```
-### Install Fail2Ban
+## Install Fail2Ban
 Install latest version of Fail2Ban
 ```bash
 sudo apt install fail2ban
 ```
-### Backup config and jail files
+## Backup config and jail files
 ```bash
 sudo cp /etc/fail2ban/fail2ban.{conf,local}
 sudo cp /etc/fail2ban/jail.{conf,local}
 ```
 
-### Modify the config files if needed
+## Modify the config files if needed
 ```bash
 # Just to make sure loglevel is "INFO" and logtarget is "/var/log/fail2ban.log" 
 sudo nano /etc/fail2ban/fail2ban.local
 # Can modify bantime, findtime, maxretry, and backend
 sudo nano /etc/fail2ban/jail.local
 ```
-### Restart Fail2Ban and check status
+## Restart Fail2Ban and check status
 ```bash
 # Restart
 sudo systemctl restart fail2ban
@@ -83,7 +83,7 @@ sudo fail2ban-client status
 sudo fail2ban-client status sshd
 ```
 
-### Lastly, to unban an IP
+## Lastly, to unban an IP
 ```bash
 sudo fail2ban-client set <JAIL> unbanip <IP>
 ```

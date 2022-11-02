@@ -1,7 +1,7 @@
 ---
 title: "Palo Alto NGFW Day 1 Configuration"
 date: 2022-10-14 10:00:00 -700
-categories: [paloalto, firewall, snippet]
+categories: [paloalto, firewall]
 tags: [network, firewall, paloalto, config] #TAG names should always be lowercase
 ---
 # Palo Alto NGFW Day 1 Config

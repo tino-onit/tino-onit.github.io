@@ -1,8 +1,8 @@
 ---
 title: "How to setup Palo Alto VM-Series in a transit VNet"
 date: 2022-09-29 10:00:00 -700
-categories: [cloud, paloalto, firewall]
-tags: [cloud, azure, vnet, firewall, paloalto, ha]    #TAG names should always be lowercase
+categories: [cloud, paloalto]
+tags: [cloud, azure, vnet, firewall, paloalto]    #TAG names should always be lowercase
 ---
 # Palo Alto VM-Series Firewalls on Azure
 I recently completed a project where I deployed a pair of VM-Series firewalls, in an Active/Passive HA setup, on Azure using a "transit" VNet. A VNet on Azure is just a defined address space where you create subnets for NIC's to live in.  
