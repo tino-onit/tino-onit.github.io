@@ -15,3 +15,6 @@ One way to get around this is to deploy your first firewall and get it up and ru
 Redeploy the template and it will use the same RG that was used for the first firewall.
 
 :cloud: :bowtie:
+
+
+-eof-

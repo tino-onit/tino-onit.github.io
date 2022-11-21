@@ -67,3 +67,5 @@ echo '127.0.0.127 xml.cisco.com' >> /etc/hosts
 {: .nolineno }
 
 ### Additional
+
+-eof-

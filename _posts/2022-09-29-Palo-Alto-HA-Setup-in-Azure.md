@@ -9,15 +9,14 @@ I recently completed a project where I deployed a pair of VM-Series firewalls, i
 
 One of the caveats is that you have to be ok with 2min-5min of downtime (ie. no traverse traffic) while the Passive firewall transitions to Active. This is because - as you'll see below - this design uses a "floating IP" configured in Azure.  
 
-This "floating IP" becomes the default gateway for egress and ingress traffic.
+This "floating IP" becomes the default gateway for egress and ingress traffic.  
+
 ```
-VNet (10.0.0.0/16)
- │  
- └─Subnet (10.0.1.0/24, 10.0.2.0/24, ect..)  
-    │  
-    └─NIC (10.0.1.10/24)  
-       │  
-       └─Security Group  
+.
+├── VNet (10.0.0.0/16)
+ └── Subnet (10.0.1.0/24, 10.0.2.0/24, ect..)  
+  └── NIC (10.0.1.10/24) 
+   └── Security Group  
 ```
 This link explains Microsoft best practices for deploying resources across Subscriptions and VNETs  
 [ ​https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-networking ](​https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-networking)
@@ -151,3 +150,6 @@ SDWAN Trust route table
 ![Azure SDWAN Trust RT](https://i.imgur.com/QIwqcoL.png)
 SDWAN UnTrust route table
 ![Azure SDWAN UnTrust RT](https://i.imgur.com/Hb4YZuJ.png)
+
+
+-eof-
