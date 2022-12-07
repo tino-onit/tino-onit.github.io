@@ -20,6 +20,11 @@ Get-ADUser -filter * -properties DisplayName,mobile | select DisplayName,mobile 
 Get-ADUser -Identity <USERNAME> -Properties *
 ```
 
+## Get Group information
+```powershell
+Get-ADGroup -Identity <SECURITY_GROUP> -Properties *
+```
+
 ## cmd to get public IP and Country
 ```powershell
 curl ifconfig.io/ip | Out-String -Stream| Select-String "Content"
