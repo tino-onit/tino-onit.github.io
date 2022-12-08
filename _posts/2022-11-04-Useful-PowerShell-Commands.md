@@ -25,6 +25,11 @@ Get-ADUser -Identity <USERNAME> -Properties *
 Get-ADGroup -Identity <SECURITY_GROUP> -Properties *
 ```
 
+## Get Group Member in a table format
+```powershell
+Get-ADGroupMember <GROUP> | FORMAT-Table
+```
+
 ## cmd to get public IP and Country
 ```powershell
 curl ifconfig.io/ip | Out-String -Stream| Select-String "Content"
