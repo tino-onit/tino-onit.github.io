@@ -1,0 +1,21 @@
+---
+title: "Useful RegEx Snippets"
+date: 2022-12-08 10:00:00 -700
+categories: [snippet]
+tags: [network, regex, cmd]    #TAG names should always be lowercase
+---
+
+# RegEx Snippets
+These are some useful RegEx snippets that I find myself using over and over
+
+## Selecting all the railing whitespace (tabs or space)
+---
+This can be modified to search through other AD user properties also
+```
+[ \t]+$
+```
+
+## Select everything between two words
+```
+(.*)
+```

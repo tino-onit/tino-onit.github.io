@@ -36,4 +36,17 @@ curl ifconfig.io/ip | Out-String -Stream| Select-String "Content"
 curl ifconfig.io/country_code | Out-String -Stream| Select-String "Content"
 ```
 
+## Find Listening ports (22/SSH for example)
+```powershell
+netstat -ano | select-string "LISTENING"
+netstat -ano | select-string ":22"
+```
+
+## Find process using that port
+```powershell
+Grab process ID (Last column from previous command)
+tasklist /fi "PID eq 1528"
+```
+
+
 -eof-
