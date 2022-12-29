@@ -8,7 +8,7 @@ tags: [network, regex, cmd]    #TAG names should always be lowercase
 # RegEx Snippets
 These are some useful RegEx snippets that I find myself using over and over
 
-## Selecting all the railing whitespace (tabs or space)
+## Selecting all the trailing whitespace (tabs or space)
 ---
 This can be modified to search through other AD user properties also
 ```
@@ -19,3 +19,28 @@ This can be modified to search through other AD user properties also
 ```
 (.*)
 ```
+
+## Remove all blank lines
+```
+^(?:[\t ]*(?:\r?\n|\r))+
+```
+Example: Lets remove the blank lines from this config
+```
+config firewall address
+edit "*.evercast-webrtc.com"
+
+set type fqdn
+set fqdn "*.evercast-webrtc.com"
+next
+```
+Open Search and Replace and type in the RegEx above and the results will be
+```
+config firewall address
+edit "*.evercast-webrtc.com"
+set type fqdn
+set fqdn "*.evercast-webrtc.com"
+next
+```
+
+
+-eof-
