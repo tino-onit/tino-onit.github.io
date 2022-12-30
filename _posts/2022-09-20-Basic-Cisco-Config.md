@@ -11,7 +11,7 @@ Below is a very basic config I typically configure on a new Cisco router or swit
 
 > Change *HOSTNAME*, *INTERFACE*, and *IP ADDRESS* as needed
 
-```
+```shell
 hostname <HOSTNAME>
 !
 ip domain name <DOMAIN_NAME>
@@ -44,28 +44,27 @@ archive
 !
 end
 ```
-{: .nolineno }
+ 
+ If needed, to disable the "phone home" feature
 
-### If needed, to disable the "phone home" feature
-```
+```shell
 !
 grep -q -F '127.0.0.1 xml.cisco.com' /etc/hosts || echo '127.0.0.1 xml.cisco.com' | sudo tee -a /etc/hosts"
 !
 ```
-{: .nolineno }
+
 The command adds the following text to /etc/hosts:
 "127.0.0.1 xml.cisco.com"
 
+If that doesn't work try
 
-### If that doesn't work try
-```
+```shell
 !
 term shell
 echo '127.0.0.127 xml.cisco.com' >> /etc/hosts
 !
 ```
-{: .nolineno }
 
-### Additional
+Additional
 
 -eof-
