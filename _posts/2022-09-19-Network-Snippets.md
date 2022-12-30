@@ -44,7 +44,6 @@ curl ifconfig.io/ip
 ```bash
 while true; do curl ifconfig.io/ip; done
 ```
-{: .nolineno }
 
 ## PowerShell cmd to get public IP and Country
 
@@ -53,7 +52,6 @@ curl ifconfig.io/ip | Out-String -Stream| Select-String "Content"
 curl ifconfig.io/country_code | Out-String -Stream| Select-String "Content"
 ```
 
-{: .nolineno }
 
 ## Cisco IOS command to show Assigned and UP interfaces
 
