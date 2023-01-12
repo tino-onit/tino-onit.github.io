@@ -6,15 +6,20 @@ tags: [linux, cmd]    #TAG names should always be lowercase
 ---
 
 # Linux Commands
+
 These are some useful Linux commands that I find myself using over and over. Expect this list to grow over time.
 
+---
+
 ## Show top n process for CPU and MEM
+
 ```bash
 ps -eo comm,pcpu --sort -pcpu | head -5; ps -eo comm,pmem --sort -pmem | head -5
 ```
 ### Example
+
 ```bash
-milo@svr01:~$ ps -eo comm,pcpu --sort -pcpu | head -5; ps -eo comm,pmem --sort -pmem | head -5
+user01@svr01:~$ ps -eo comm,pcpu --sort -pcpu | head -5; ps -eo comm,pmem --sort -pmem | head -5
 COMMAND         %CPU
 fwupd            0.8
 pihole-FTL       0.1
@@ -26,13 +31,14 @@ Xorg             0.8
 fwupd            0.8
 systemd-journal  0.6
 ```
-Thats alot to remember, so instead you can just Alias it. Alias (in shells) is just a nice way to "shortcut" commands.
 
+>That's a lot to remember, so instead you can just Alias it. Alias (in shells) is just a nice way to "shortcut" commands.
 Using the above as an example, lets Alias it into a easier to remember command
 ```bash
 alias top5="ps -eo comm,pcpu --sort -pcpu | head -5; ps -eo comm,pmem --sort -pmem | head -5"
 ```
-So now, all we need to do is run "top5" and it will execute our chained command
+
+>So now, all we need to do is run "top5" and it will execute our chained command
 ```bash
 milo@svr01:~$ top5
 COMMAND         %CPU
