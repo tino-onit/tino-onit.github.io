@@ -123,4 +123,26 @@ diag debug reset
 diag debug application fnbamd -1
 ```
 
+## Setting up a FortiGate in Eve-NG
+
+When setting up a FortiGate VM in Eve-NG, for lab work, I had issues getting to the GUI until I did the following
+
+```shell
+config system route
+    edit 1
+        set device "port1"
+        set gateway 192.168.1.1 # Or whatever IP you want
+    next
+end
+config system interface
+    edit "port1"
+        set ip 192.168.1.99 255.255.255.0 # Or whatever Gateway you want
+        set allowaccess ping https ssh http
+        set type physical
+    next
+end
+```
+
+Please note, that on some (older) version of FortiOS, you replace ```config system route``` with ```config router static```
+
 -eof-
