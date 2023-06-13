@@ -122,27 +122,30 @@ diag debug disable
 diag debug reset
 diag debug application fnbamd -1
 ```
+## Log into Secondary firewall, in an HA cluster
 
-## Setting up a FortiGate in Eve-NG
-
-When setting up a FortiGate VM in Eve-NG, for lab work, I had issues getting to the GUI until I did the following
+During a recent firmware upgrade, I ran into a problem and needed to log into the secondary firewall to kick off the upgrade process. We didn't have seperate/out-of-band management interfaces, so this is how I did it.
 
 ```shell
-config system route
-    edit 1
-        set device "port1"
-        set gateway 192.168.1.1 # Or whatever IP you want
-    next
-end
-config system interface
-    edit "port1"
-        set ip 192.168.1.99 255.255.255.0 # Or whatever Gateway you want
-        set allowaccess ping https ssh http
-        set type physical
-    next
-end
+# On primary FW, the following command lists the firewalls in the cluster
+execute ha manage ?
+
+# Then just do this, 0 being the ID of the secondary firewall
+execute ha manager 0 admin  <-- Replace with your username
 ```
 
-Please note, that on some (older) version of FortiOS, you replace ```config system route``` with ```config router static```
+That will log you into the secondary FW and allow you to run commands on it.
+
+## Useful Links
+
+These are some useful links, which I've used in the past to help troubleshoot various FortiGate issues
+
+[Troubleshooting HA synchronization issues](https://community.fortinet.com/t5/FortiGate/Troubleshooting-Tip-HA-synchronization-issue-cluster-out-of-sync/ta-p/193422?externalID=FD45183)
+
+[Procedure for HA manual synchronization](https://community.fortinet.com/t5/FortiGate/Technical-Tip-Procedure-for-HA-manual-synchronization/ta-p/196067?externalID=FD36494)
+
+[Fix an HA (High Availability) cluster upgrade failure](https://community.fortinet.com/t5/FortiGate/Troubleshooting-Tip-Fix-an-HA-High-Availability-cluster-upgrade/ta-p/242194)
+
+
 
 -eof-
