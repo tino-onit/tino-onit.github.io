@@ -5,7 +5,7 @@ theme: jekyll-theme-chirpy
 
 # Change the following value to '/PROJECT_NAME' ONLY IF your site type is GitHub Pages Project sites
 # and doesn't have a custom domain.
-baseurl: ""
+baseurl: "/tino-onit.github.io"
 
 # The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
 # If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
@@ -20,7 +20,7 @@ timezone: America/Los_Angeles
 
 title: Is the Internet working? # the main title
 
-tagline: You should check DNS # it will display as the sub-title
+tagline: If not, check DNS # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   Various tidbits of information I use over and over
@@ -38,7 +38,7 @@ social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
   name: Tino
-  email: example@domain.com # change to your email address
+  email: none@yourbiz.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
     - https://twitter.com/tin0_0nit # change to your twitter homepage
