@@ -56,10 +56,10 @@ next
 ^[^$]*
 ```
 
-## Select everything, from a charector/word/other, to the end. Including blank spaces
+## Select everything, from a character/word/other, to the end. Including blank spaces
 
 ```shell
-([ ,]+)(M)(.*)
+([ ,]+)(connected)(.*)
 ```
 
 > Example: Lets remove everything except the interface name
