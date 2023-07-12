@@ -1,6 +1,6 @@
 ---
 title: "Cisco Flex Links"
-date: 2023-07-07 10:00:00 -700
+date: 2023-07-11 10:00:00 -700
 categories: [Cisco]
 tags: [cisco, config, cmd, network]    #TAG names should always be lowercase
 ---
