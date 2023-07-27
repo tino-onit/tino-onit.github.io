@@ -56,5 +56,23 @@ fwupd            0.8
 systemd-journal  0.6
 ```
 
+## Check for listening ports
+
+On Linux
+
+```shell
+sudo netstat -tunlp
+```
+Will display something like
+
+```shell
+root@net-tools:~# sudo netstat -tunlp
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN      310091/systemd-reso
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      310074/sshd: /usr/s
+tcp6       0      0 :::22                   :::*                    LISTEN      310074/sshd: /usr/s
+udp        0      0 127.0.0.53:53           0.0.0.0:*                           310091/systemd-reso
+```
 
 -eof-

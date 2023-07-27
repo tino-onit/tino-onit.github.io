@@ -9,6 +9,43 @@ tags: [linux, cmd, server, snippet]    #TAG names should always be lowercase
 
  This is something - which I've gathered from different resources - that I do whenever I setup a new Linux server or workstation. In general, this would work with any distribution but I mostly use Ubuntu and Debian (tomato/tomahto)
 
+## Create a new user (if not done during install)
+
+We need to create a new user so as to not use the root account for general administration - and hopefully we made sure to set a really good root account password ;)
+
+Create the new user
+
+```bash
+adduser <username>
+```
+Any you'll be presented with some prompts
+
+```bash
+root@server1:~# adduser user1
+Adding user `user1' ...
+Adding new group `user1' (1000) ...
+Adding new user `user1' (1000) with group `user1' ...
+Creating home directory `/home/user1' ...
+Copying files from `/etc/skel' ...
+New password: 
+Retype new password: 
+passwd: password updated successfully
+Changing the user information for user1
+Enter the new value, or press ENTER for the default
+        Full Name []: 
+        Room Number []: 
+        Work Phone []: 
+        Home Phone []: 
+        Other []: 
+Is the information correct? [Y/n] y
+```
+Next step would be to add that user to the sudoers group to be able to run elevated commands. Just run
+
+```bash
+adduser user1 sudo
+```
+Great, now we are ready to continue
+
 ## Get latest updates
 
 ```bash
@@ -49,7 +86,7 @@ sudo ufw allow https
 sudo ufw allow "Nginx Full"
 ```
 
-## Check UFW log file
+### Check UFW log file
 
 ```bash
 grep -i ufw /var/log/syslog
@@ -66,20 +103,20 @@ Install latest version of Fail2Ban
 ```bash
 sudo apt install fail2ban
 ```
-## Backup config and jail files
+### Backup config and jail files
 ```bash
 sudo cp /etc/fail2ban/fail2ban.{conf,local}
 sudo cp /etc/fail2ban/jail.{conf,local}
 ```
 
-## Modify the config files if needed
+### Modify the config files if needed
 ```bash
 # Just to make sure loglevel is "INFO" and logtarget is "/var/log/fail2ban.log" 
 sudo nano /etc/fail2ban/fail2ban.local
 # Can modify bantime, findtime, maxretry, and backend
 sudo nano /etc/fail2ban/jail.local
 ```
-## Restart Fail2Ban and check status
+### Restart Fail2Ban and check status
 ```bash
 # Restart
 sudo systemctl restart fail2ban
@@ -89,7 +126,7 @@ sudo fail2ban-client status
 sudo fail2ban-client status sshd
 ```
 
-## Lastly, to unban an IP
+### Lastly, to unban an IP
 ```bash
 sudo fail2ban-client set <JAIL> unbanip <IP>
 ```
