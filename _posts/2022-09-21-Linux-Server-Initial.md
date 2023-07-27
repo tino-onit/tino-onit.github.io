@@ -44,13 +44,22 @@ Next step would be to add that user to the sudoers group to be able to run eleva
 ```bash
 adduser user1 sudo
 ```
+
+And last, switch over to the new user
+
+```bash
+su user1
+```
+
 Great, now we are ready to continue
 
 ## Get latest updates
 
 ```bash
 sudo apt update && apt upgrade -y
+
 ```
+
 ## Change Hostname
 ```bash
 sudo hostnamectl set-hostname <HOSTNAME>
@@ -58,23 +67,29 @@ sudo hostnamectl set-hostname <HOSTNAME>
 ```
 
 ## Set time zone and time
+
 ```bash
 sudo timedatectyl set-timezone <TIMEZONE>
 ```
 
 ## Install UFW and configure
 Install latest version of UFW
+
 ```bash
 sudo apt install ufw
+
 ```
 Default allow/deny policies
+
 ```bash
 # Allow all egress traffic
 sudo ufw default allow outgoing
 # Deny all ingress traffic
 sudo ufw default deny incoming
 ```
+
 Allow ssh (and http, https, if hosting a website)
+
 ```bash
 sudo ufw allow ssh
 
@@ -93,17 +108,23 @@ grep -i ufw /var/log/syslog
 ```
 
 Misc. commands
+
 ```bash
 sudo ufw status
 sudo ufw app list | grep <APPLICATION>
 sudo ufw status numbered
+
 ```
+
 ## Install Fail2Ban
 Install latest version of Fail2Ban
+
 ```bash
 sudo apt install fail2ban
 ```
+
 ### Backup config and jail files
+
 ```bash
 sudo cp /etc/fail2ban/fail2ban.{conf,local}
 sudo cp /etc/fail2ban/jail.{conf,local}
