@@ -11,7 +11,7 @@ These are some useful Linux commands that I find myself using over and over. Thi
 
 __In order to not have an endless page of content, see the related pages__
 
-[Linux-Commands-pt1](https://www.linode.com/docs/guides/security/basics/)
+[Linux-Commands-pt1](https://tino-onit.github.io/posts/Linux-Commands-pt1/)
 
 ## Custom Bash prompt
 

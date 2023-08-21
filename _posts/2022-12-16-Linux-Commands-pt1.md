@@ -11,7 +11,7 @@ These are some useful Linux commands that I find myself using over and over. Exp
 
 In order to not have an endless page of content, see the related pages
 
-[Linux-Commands-pt2](https://www.linode.com/docs/guides/security/basics/)
+[Linux-Commands-pt2](https://tino-onit.github.io/posts/Linux-Commands-pt2/)
 ---
 
 ## Show top n process for CPU and MEM
