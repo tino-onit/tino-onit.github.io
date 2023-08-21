@@ -49,4 +49,29 @@ Than, just reload your shell
 
 Alternatively, I've also used the ZSH shell and installed [oh-my-zsh](https://ohmyz.sh/) to make it more productive.
 
+## Get the forecast
+
+Did you know you can get the forecast from your CLI?
+
+```bash
+curl wttr.in
+```
+
+Will output something like 
+
+```bash
+-> % curl wttr.in
+Weather report: Manhattan, New York, United States
+
+       .-.      Rain
+      (   ).    +73(77) °F
+     (___(__)   ↖ 8 mph
+    ‚‘‚‘‚‘‚‘    3 mi
+    ‚’‚’‚’‚’    0.4 in
+
+```
+
+Plus the forecast for the next 3 days. 
+
+
 -eof-
