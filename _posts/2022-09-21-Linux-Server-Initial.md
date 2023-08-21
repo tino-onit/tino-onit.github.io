@@ -7,7 +7,7 @@ tags: [linux, cmd, server, snippet]    #TAG names should always be lowercase
 
 # Initial config of a Linux server
 
- This is something - which I've gathered from different resources - that I do whenever I setup a new Linux server or workstation. In general, this would work with any distribution but I mostly use Ubuntu and Debian (tomato/tomahto)
+ This is something - which I've gathered from different resources - that I do whenever I setup a new Linux server or workstation. In general, this would work with any distribution but I mostly use Ubuntu and Debian.
 
 ## Create a new user (if not done during install)
 
@@ -39,6 +39,7 @@ Enter the new value, or press ENTER for the default
         Other []: 
 Is the information correct? [Y/n] y
 ```
+
 Next step would be to add that user to the sudoers group to be able to run elevated commands. Just run
 
 ```bash
@@ -61,6 +62,7 @@ sudo apt update && apt upgrade -y
 ```
 
 ## Change Hostname
+
 ```bash
 sudo hostnamectl set-hostname <HOSTNAME>
 # Also change hostname in /etc/hosts
@@ -73,12 +75,14 @@ sudo timedatectyl set-timezone <TIMEZONE>
 ```
 
 ## Install UFW and configure
+
 Install latest version of UFW
 
 ```bash
 sudo apt install ufw
 
 ```
+
 Default allow/deny policies
 
 ```bash
@@ -117,6 +121,7 @@ sudo ufw status numbered
 ```
 
 ## Install Fail2Ban
+
 Install latest version of Fail2Ban
 
 ```bash
@@ -131,13 +136,16 @@ sudo cp /etc/fail2ban/jail.{conf,local}
 ```
 
 ### Modify the config files if needed
+
 ```bash
 # Just to make sure loglevel is "INFO" and logtarget is "/var/log/fail2ban.log" 
 sudo nano /etc/fail2ban/fail2ban.local
 # Can modify bantime, findtime, maxretry, and backend
 sudo nano /etc/fail2ban/jail.local
 ```
+
 ### Restart Fail2Ban and check status
+
 ```bash
 # Restart
 sudo systemctl restart fail2ban
@@ -148,11 +156,13 @@ sudo fail2ban-client status sshd
 ```
 
 ### Lastly, to unban an IP
+
 ```bash
 sudo fail2ban-client set <JAIL> unbanip <IP>
 ```
 
 ## Web Links
+
 Web links to some good resources
 
 [Linode Security Basics](https://www.linode.com/docs/guides/security/basics/)

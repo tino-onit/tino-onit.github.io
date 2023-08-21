@@ -1,5 +1,5 @@
 ---
-title: "Useful Linux Commands"
+title: "Linux-Commands-pt1"
 date: 2022-12-16 10:00:00 -700
 categories: [Linux]
 tags: [linux, cmd, snippet]    #TAG names should always be lowercase
@@ -9,6 +9,9 @@ tags: [linux, cmd, snippet]    #TAG names should always be lowercase
 
 These are some useful Linux commands that I find myself using over and over. Expect this list to grow over time.
 
+In order to not have an endless page of content, see the related pages
+
+[Linux-Commands-pt2](https://www.linode.com/docs/guides/security/basics/)
 ---
 
 ## Show top n process for CPU and MEM
