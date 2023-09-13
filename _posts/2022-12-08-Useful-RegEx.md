@@ -81,7 +81,6 @@ If you need to select everything up until a specific character, you can use the 
 
 > Example: 160117.070: CMD: 'show stackwise-virtual links' 16:44:44 PDT Mon Sep 11 2023
 
-
 ```shell
 160([^:]*):
 ```
