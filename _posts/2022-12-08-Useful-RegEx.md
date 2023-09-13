@@ -75,4 +75,17 @@ Gi1/0/30                        connected    107        a-full a-1000 10/100/100
 Gi1/0/30
 ```
 
+## Select all characters up to a specific character
+
+If you need to select everything up until a specific character, you can use the following
+
+> Example: 160117.070: CMD: 'show stackwise-virtual links' 16:44:44 PDT Mon Sep 11 2023
+
+
+```shell
+160([^:]*):
+```
+
+Will select _160117.070:_ up until the first ":"
+
 -eof-
