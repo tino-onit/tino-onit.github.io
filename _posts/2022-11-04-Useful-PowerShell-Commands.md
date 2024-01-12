@@ -14,6 +14,7 @@ These are some useful PowerShell commands that I find myself using over and over
 ## Searching AD for a specific mobile number
 
 > This can be modified to search through other AD user properties also
+
 ```powershell
 Get-ADUser -filter * -properties DisplayName,mobile | select DisplayName,mobile | Select-String 1234
 ```
@@ -59,6 +60,7 @@ netstat -ano | select-string ":22"
 ## Find process using that port
 
 > Grab process ID (Last column from previous command)
+
 ```powershell
 tasklist /fi "PID eq 1528"
 ```
@@ -66,8 +68,31 @@ tasklist /fi "PID eq 1528"
 ## Get Domain Controller name
 
 This is the DC your session is currently connected to
+
 ```powershell
 $env:LogOnServer
+```
+
+## Running Active Directory cmdlets as another user
+
+If you need to run AD cmdlets as another user - perhaps your admin account - you can do the following
+
+```powershell
+$admin = Get-Credential
+```
+
+This will pop-up a dialog box so you can input your desired user credentials. This will be saved under the $admin alias (can be changed to whatever you want)
+
+Then you can run your desired commands like this
+
+```powershell
+Set-ADAccountExpiration -Credential $admin -Identity john.doe -DateTime "03/11/2029"
+```
+
+## Changing A User Password
+
+```powershell
+Set-ADAccountPassword -Identity john.doe -Reset -NewPassword (ConvertTo-SecureString -AsPlainText "SuperCoolNewPassword" -Force)
 ```
 
 -eof-
