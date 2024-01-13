@@ -38,6 +38,8 @@ systemd-journal  0.6
 ```
 
 >That's a lot to remember, so instead you can just Alias it. Alias (in shells) is just a nice way to "shortcut" commands.
+{: .prompt-tip }
+
 Using the above as an example, lets Alias it into a easier to remember command
 
 ```bash
