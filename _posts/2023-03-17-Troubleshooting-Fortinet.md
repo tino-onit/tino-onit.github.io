@@ -84,6 +84,8 @@ get router info routingtable all    # Display the current routing table active/c
 diag ip route list              # Display the kernel routing table
 ```
 
+Now we can dive a little deeper into more specific troubleshooting and the various debug commands used.
+
 ## Flow Tracing
 
 One of my favorite things to use is Flow Tracing. It lets you see what happens to the packets as they ingress and/or egress the firewall
@@ -135,6 +137,75 @@ execute ha manager 0 admin  <-- Replace with your username
 ```
 
 That will log you into the secondary FW and allow you to run commands on it.
+
+## Filter IPsec VPN connections
+
+``` diag vpn ike log-filter ```
+
+Available options are:
+
+```shell
+clear erase the current filter
+dst-addr4 the IPv4 destination address range to filter by
+dst-addr6 the IPv6 destination address range to filter by
+dst-port the destination port range to filter by
+interface interface that IKE connection is negotiated over
+list display the current filter
+name the phase1 name to filter by
+negate negate the specified filter parameter
+src-addr4 the IPv4 source address range to filter by
+src-addr6 the IPv6 source address range to filter by
+src-port the source port range to filter by
+vd index of virtual domain. -1 matches all
+```
+
+For example if you have a VPN tunnel from your firewall to a remote gateway with IP 1.2.3.4 you would use the following commands:
+
+```shell
+diag vpn ike log-filter dst-addr4 1.2.3.4
+diag debug enable
+diag debug console
+diag debug app ike 200
+
+get vpn ike gateway fd-wv-fw03
+get vpn ipsec tunnel name fd-wv-fw03
+```
+
+Now only log messages matching a destination address of 1.2.3.4 will be displayed.
+
+```shell
+diag debug reset
+diag debug enable
+diag debug console timestamp enable
+diag debug flow show console enable
+diag debug flow filter saddr X.X.X.X
+diag debug flow filter daddr X.X.X.X
+diag debug flow trace start 200
+```
+
+Also don't forget to reset your debug level when you are done to conserve system resources:
+
+```shell
+diag debug disable
+diag debug reset
+```
+
+## Find Addresses Objects
+
+Many times it happens that we have a lot of firewall policies for one address defined in our address Pool.
+Let’s take an example:
+
+We have “WWW_Server” defined with the IP of 172.18.1.10. To see what policies are using this Address we can use the following:
+
+```shell
+diag sys checkused firewall.address:name 'WWW_Server'
+```
+
+What about address group? We can find out where that address group is used by executing the following commands:
+
+```shell
+diag sys checkused firewall.addgrp:name 'Server_Groups'
+```
 
 ## Useful Links
 
