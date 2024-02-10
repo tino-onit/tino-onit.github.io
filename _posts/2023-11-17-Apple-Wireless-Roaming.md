@@ -2,7 +2,7 @@
 title: "Apple Wireless Roaming"
 date: 2023-11-17 10:00:00 -700
 categories: [Networking]
-tags: [networking,apple,wireless]    #TAG names should always be lowercase
+tags: [network,apple,wireless]    #TAG names should always be lowercase
 ---
 
 # macOS Wireless Roaming for Enterprise Customers

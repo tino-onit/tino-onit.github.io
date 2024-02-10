@@ -2,7 +2,7 @@
 title: "ClearPass vs ISE, Terminology"
 date: 2023-11-22 10:00:00 -700
 categories: [Networking]
-tags: [networking,cisco,wireless,aruba]    #TAG names should always be lowercase
+tags: [network,cisco,wireless,aruba]    #TAG names should always be lowercase
 ---
 
 # ClearPass vs ISE, Terminology

@@ -2,7 +2,7 @@
 title: "Job Interview Prep and Questions"
 date: 2024-12-31 10:00:00 -700
 categories: [misc]
-tags: [networking,cisco,paloalto,aruba,firewall]    #TAG names should always be lowercase
+tags: [network,cisco,paloalto,aruba,firewall]    #TAG names should always be lowercase
 ---
 # Job Interview Prep and Questions
 
