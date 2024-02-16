@@ -8,6 +8,8 @@ tags: [network,fortinet,firewall,paloalto,cisco]    #TAG names should always be 
 
 # FortiGate Naming Schema
 
+While browsing around for any on firewall object/policy naming suggestions, I found this post on reddit. While Its a nice and very thorough document, I do suggest (as this is what I did) to take the info and make it your own. Essentially, reading that post gave me some good ideas in the direction I wanted to take in my firewall naming schema
+
 A suggested nomenclature for FortiGate firewall configurations, as first documented by the illustrious [/u/VeryStrongBoi](https://www.reddit.com/user/VeryStrongBoi/) in the following thread:
 
 [Firewall object naming - What's your standard?](https://www.reddit.com/r/fortinet/comments/q1vqfi/firewall_object_naming_whats_you_standard/)
