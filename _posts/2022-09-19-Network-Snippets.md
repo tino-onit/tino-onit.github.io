@@ -105,6 +105,17 @@ Which is nice, but if you just want a simple number then you can do the followin
 SW-1#show int | count connected      
 Number of lines which match regexp = 41
 ```
+## Cleanup files on Windows
+
+Not really a network thing, but useful none the less. Cleanup files on your Windows workstation
+
+```console
+1.) Clear %TEMP%
+2.) Clear C:\Windows\Temp
+3.) Run cleanmgr.exe
+4.) Run patchmypc.exe
+5.) Delete stuff in %APPDATA% you don't have anymore
+```
 
 ---
 
