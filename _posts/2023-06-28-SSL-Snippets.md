@@ -97,7 +97,7 @@ Should get you an output like below
 
 ## Displaying Ciphers
 
-This allows you view the supported ciphers 
+This allows you view the supported ciphers
 
 ```shell
 nmap --script +ssl-enum-ciphers -p 443 example.com
@@ -198,6 +198,5 @@ Testing AES128-CCM...NO (system lib)
 Testing ARIA128-GCM-SHA256...YES (system lib)
 ...
 ```
-
 
 -eof-
