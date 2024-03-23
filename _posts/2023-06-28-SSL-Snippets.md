@@ -9,11 +9,75 @@ tags: [troubleshooting, cmd, linux, openssl, certificates, snippet]    #TAG name
 
 Various commands I've used to help troubleshoot and/or check certificate issues on webserver, services, and devices.
 
-## Get a quick summary of the certificate information
+## Creating a SAN certificate
+
+SAN stands for “Subject Alternative Names” and this helps you to have a single certificate for multiple CN (Common Name). In some cases, organizations can decide to save costs by issuing SAN certs for multiple public facing websites and services
+
+### Create the CSR
+
+- Log into a server where you have OpenSSL installed. In most cased, this is going to be some flavor of Linux
+- Navigate to which ever dir you want to work in
+- Create a configuration file using any text editor. As an example, lets call this *san.cnf*. In this file, put the following information
+
+```shell
+[ req ]
+default_bits       = 2048
+distinguished_name = req_distinguished_name
+req_extensions     = req_ext
+
+[ req_distinguished_name ]
+countryName                 = Country Name (2 letter code)
+stateOrProvinceName         = State or Province Name (full name)
+localityName               = Locality Name (eg, city)
+organizationName           = Organization Name (eg, company)
+commonName                 = Common Name (e.g. server FQDN or YOUR name)
+
+[ req_ext ]
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1   = tino-onit.github.io
+DNS.2   = tino-onit.xyz
+DNS.3   = tino-onit.net
+IP.1    = 127.0.0.1
+```
+
+> **Note:** Settings in this file can be edited to you preference, e.g, bits, field texts and obviously the DNS names. You can also do IP's as I have shown above. Just to be clear, the "alt_names" section is the one you'll want to add those DNS names and/or IP's
+{: .prompt-info }
+
+Save the file and then execute the following OpenSSL command to generate the CSR and KEY file.
+
+```shell
+openssl req -out website-cert.csr -newkey rsa:2048 -notes -keyout website-priv.key -config san.cnf
+```
+
+This is going to create ```website-cert.csr``` and ```website-priv.key``` in the current dir. You will then send ```website-cert.csr``` to whomever the certificate signing authority is, so they can provide you with a (SAN) certificate.
+
+### Verifying your CSR
+
+Before sending your CSR off to the CA, you might to check it to ensure all the data is correct. You can do so with the following command
+
+```shell
+openssl req -noout -text -in website-cert.csr 
+# or more specifically
+openssl req -noout -text -in website-cert.csr | grep DNS
+```
+
+Which should output something like
+
+```shell
+[tino@server certs]# 
+    DNS:tino-onit.github.io,DNS:tino-onit.xyz,DNS:tino-onit.net
+```
+
+Again, if you are happy with the results then you can go ahead and send it off to your signing authority to issue a certificate.
+
+## Get certificate information
 
 ```shell
  curl --insecure -vvI https://example.com" 2>&1 | awk 'BEGIN { cert=0 } /^\* SSL connection/ { cert=1 } /^\*/ { if (cert) print }'
 ```
+
 Should get you an output like below
 
 ```shell
