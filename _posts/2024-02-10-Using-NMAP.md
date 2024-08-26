@@ -298,7 +298,7 @@ nmap -sX 192.168.1.254
  
 ```
 
-See how to block Xmas packkets, syn-floods and other conman attacks with iptables.
+See how to block Xmas packets, syn-floods and other conman attacks with iptables.
 
 ## Scan a firewall for packets fragments
 
