@@ -10,13 +10,14 @@ tags: [network,snippet,cmd,troubleshooting,python]    #TAG names should always b
 
 As part of routine maintenance, its a good idea to keep the software/firmware on your network gear updated. Reasons include feature update/releases, bug fixes, and security patches.
 What I do on my WinX workstation is
+
 1. Create a file directory. I like to do this directly under the C: drive, ie. ```C:\tftp-root\```
 2. Download software/firmware from the hardware vendor site and save to newly created folder
 3. Open Powershell, change to directory, and run ```python -m http.server``` (assuming you have Python installed on your system, this will run a webserver in the current directory)
 
 The Powershell window will look something like this
 
-```Powershell
+```powershell
     Directory: C:\tftp-root
 
 
@@ -47,7 +48,9 @@ As you can see, the web server is running on port 8000 (by default) and you are 
 
 ### WS-C2960X
 
-```archive download-sw /leave-old-sw /reload http://<SERVER_IP>:8000/c2960x-universalk9-tar.152-7.E10.tar```
+```powershell
+archive download-sw /leave-old-sw /reload http://<SERVER_IP>:8000/c2960x-universalk9-tar.152-7.E10.tar
+```
 
 What will this do?
 ```/leave-old-sw``` Leave old sw installed after successful sw upgrade. Useful if you might need to rollback
@@ -55,29 +58,46 @@ What will this do?
 
 ### C9300X
 
-```request platform software package install switch all file http://<SERVER_IP>:8080/cat9k_iosxe.17.06.07.SPA.bin new auto-copy verbose```
+```powershell
+request platform software package install switch all file http://<SERVER_IP>:8080/cat9k_iosxe.17.06.07.SPA.bin new auto-copy verbose
+```
 
 Or, if you've already copied the file to the local flash and just need to install, you can run the following
-```request platform software package install switch all file flash:<version> new auto-copy verbose```
+
+```powershell
+request platform software package install switch all file flash:<version> new auto-copy verbose
+```
 
 Confirm install is done
-```more flash-1:packages.conf | begin rp_boot```
+
+```powershell
+more flash-1:packages.conf | begin rp_boot
+```
 
 Confirm the boot variable shows the new version
-```sh boot```
+
+```powershell
+sh boot
+```
 
 Reboot and install
-```reload```
+
+```powershell
+reload
+```
 
 Clean up old files
+
+```powershell
 request platform software package clean switch all
+```
 
 ### C9500
 
 The nice thing about the 9500's is the ability to perform an ISSU upgrade - provided you have Stackwise Virtual configured
 
 
-```bash
+```powershell
 install add file http://10.2.10.20:8000/cat9k_iosxe.17.06.07.SPA.bin
 install activate issu
 install commit
