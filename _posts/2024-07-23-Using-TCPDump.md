@@ -270,5 +270,4 @@ Traffic with the ‘Evil Bit’ Set
 
 Well, this primer should get you going strong, but the man page should always be handy for the most advanced and one-off usage scenarios. I truly hope this has been useful to you, and feel free to contact me if you have any questions.
 
-
 -eof-
