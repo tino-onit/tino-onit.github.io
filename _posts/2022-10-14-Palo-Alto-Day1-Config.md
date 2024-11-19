@@ -35,6 +35,7 @@ Additionally, you can read more about the configuration [here, at the IronSkille
 I have broken down the _in my opinion_, nicely constructed security profiles. You can use these as a basis for your Outbound, Inbound, and Internal security policies. This also includes SSL decryptions profiles.
 ## Custom URL Category Profiles
 ---
+
 ```bash
 # -------------------- Custome URL categories I typycally use
 set profiles custom-url-category Allow-URL-List type "URL List"
@@ -49,8 +50,10 @@ set profiles custom-url-category Allow-URL-Geo-Exception type "URL List"
 set profiles custom-url-category Microsoft-365-URL-List type "URL List"
 set profiles custom-url-category Microsoft-365-URL-List list [ *.microsoft.com/ ]
 ```
+
 ## Decryption Profiles
 ---
+
 ```bash
 # -------------------- Default Decryption
 set profiles decryption Decryption_Profile ssl-forward-proxy block-expired-certificate yes
@@ -91,8 +94,10 @@ set profiles decryption Decryption_Profile-Expired ssl-protocol-settings enc-alg
 set profiles decryption Decryption_Profile-Expired ssl-protocol-settings enc-algo-rc4 no
 set profiles decryption Decryption_Profile-Expired ssl-protocol-settings auth-algo-sha1 yes
 ```
+
 ## Antivirus Profiles
 ---
+
 ```bash
 # -------------------- Alert-Only
 set profiles virus Alert-Only-AV decoder ftp action alert
@@ -221,8 +226,10 @@ set profiles virus Exception-AV mlav-engine-filebased-enabled "PowerShell Script
 set profiles virus Exception-AV mlav-engine-filebased-enabled "PowerShell Script 2" mlav-policy-action enable
 set profiles virus Exception-AV description "Use this profile for rules needing modifications to the standard"
 ```
+
 ## Anti-spyware Profiles
 ---
+
 ```bash
 # -------------------- Outbound
 set profiles spyware Outbound-AS botnet-domains lists default-paloalto-dns action sinkhole
@@ -401,8 +408,10 @@ set profiles spyware Exception-AS botnet-domains dns-security-categories pan-dns
 set profiles spyware Exception-AS botnet-domains sinkhole ipv4-address 72.5.65.111
 set profiles spyware Exception-AS botnet-domains sinkhole ipv6-address 2600:5200::1
 ```
+
 ## Vulnerability
 ---
+
 ```bash
 # -------------------- Outbound
 set profiles vulnerability Outbound-VP rules Block-Critical-High-Medium action reset-both
@@ -471,8 +480,10 @@ set profiles vulnerability Alert-Only-VP threat-exception 59323 action allow
 # -------------------- Exception
 set profiles vulnerability Exception-VP
 ```
+
 ## File-Blocking Profiles
 ---
+
 ```bash
 # -------------------- Outbound
 set profiles file-blocking Outbound-FB rules Alert-All application any
@@ -508,6 +519,7 @@ set profiles file-blocking Alert-Only-FB rules Alert-Only file-type any
 ```
 ## URL Filtering Profiles
 ---
+
 ```bash
 # -------------------- Alert-Only
 set profiles url-filtering Alert-Only-URL credential-enforcement mode ip-user
@@ -557,8 +569,10 @@ set profiles url-filtering Outbound-URL-IT alert [ Allow-URL-Geo-Exception Allow
 set profiles url-filtering Outbound-URL-IT block [ Block-URL-List abused-drugs adult command-and-control copyright-infringement cryptocurrency dating dynamic-dns extremism grayware hacking high-risk malware not-resolved nudity peer-to-peer phishing proxy-avoidance-and-anonymizers ransomware ]
 set profiles url-filtering Outbound-URL-IT continue [ abortion gambling newly-registered-domain parked questionable sex-education swimsuits-and-intimate-apparel unknown ]
 ```
+
 ## Wildfire
 ---
+
 ```bash
 # -------------------- Outbound
 set profiles wildfire-analysis Outbound-WF rules Forward-All application any
@@ -584,6 +598,7 @@ set profiles wildfire-analysis Alert-Only-WF rules Forward-All file-type any
 
 ## Security Profile Groups
 ---
+
 ```bash
 # -------------------- Outbound
 set profile-group Outbound-SPG virus Outbound-AV
@@ -622,6 +637,7 @@ set profile-group default-SPG wildfire-analysis Outbound-WF
 
 ## Network Profiles
 ---
+
 ```bash
 # -------------------- Zone Protection
 set network profiles zone-protection-profile Recommended_Zone_Protection flood tcp-syn enable yes
@@ -661,8 +677,10 @@ set network profiles zone-protection-profile Recommended_Zone_Protection strip-m
 set network profiles zone-protection-profile Recommended_Zone_Protection discard-unknown-option yes
 set network profiles zone-protection-profile Recommended_Zone_Protection scan-white-list RFC1918-10.0.0.0-8 ipv4 10.0.0.0/8
 ```
+
 ## System Config
 ---
+
 ```bash
 # -------------------- Various system configuration bits
 set deviceconfig system device-telemetry device-health-performance yes
@@ -690,8 +708,9 @@ set mgt-config password-complexity block-username-inclusion yes
 set mgt-config password-complexity password-history-count 24
 set mgt-config password-complexity new-password-differs-by-characters 3
 ```
+
 ## Log settings
----  
+---
 
 ```bash
 # -------------------- Default Logging setting
@@ -725,6 +744,5 @@ set shared log-settings email Email_Server_Profile server SMTP_Server_Profile tl
 set shared log-settings email Email_Server_Profile server SMTP_Server_Profile from fw01@server.com
 set shared log-settings email Email_Server_Profile server SMTP_Server_Profile to fw-team@server.com
 ```
-f
 
 -eof-
