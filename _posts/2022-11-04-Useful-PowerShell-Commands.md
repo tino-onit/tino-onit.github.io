@@ -24,6 +24,11 @@ Get-ADUser -filter * -properties DisplayName,mobile | select DisplayName,mobile 
 ```powershell
 Get-ADUser -Identity <USERNAME> -Properties *
 ```
+## View all locked accounts
+
+```powershell
+Search-ADAccount -LockedOut | Select-Object Name, SamAccountName, LockedOut, LastLogonDate, DistinguishedName
+```
 
 ## Get Group information
 
@@ -93,6 +98,35 @@ Set-ADAccountExpiration -Credential $admin -Identity john.doe -DateTime "03/11/2
 
 ```powershell
 Set-ADAccountPassword -Identity john.doe -Reset -NewPassword (ConvertTo-SecureString -AsPlainText "SuperCoolNewPassword" -Force)
+```
+
+## Get a list of GPOs installed
+
+```powershell
+Get-GPO -All
+```
+
+## Export GPO
+
+```powershell
+Get-GPOReport -Name "SetWallpaper" -ReportType HTML -Path ".\SetWallpaper.html"
+```
+
+## List GPOs that were recently modified
+
+```powershell
+Get-GPO -All | Where-Object { $_.ModificationTime } | Select-Object DisplayName,ModificationTime
+```
+Example 
+
+```powershell
+PS C:\Users\Administrator\Desktop> Get-GPO -All | Where-Object { $_.ModificationTime } | Select-Object DisplayName, ModificationTime
+
+DisplayName                                ModificationTime
+-----------                                ----------------
+Default Domain Policy                      10/14/2024 12:19:28 PM
+Default Domain Controllers Policy          10/14/2024 12:17:30 PM
+SetWallpaper                               10/31/2024 1:01:04 PM
 ```
 
 -eof-
