@@ -8,7 +8,7 @@ tags: [network,snippet,cmd,troubleshooting,bash]    #TAG names should always be 
 
 # Using TCPDump
 
-> **Preface** I just want it known that I did not write this, I found this many moons ago and saved it to my Evernote. Unfortunatly, I never made note of the URL and who _did_ write this. After some Googleing, I think it might [be from this person https://danielmiessler.com/p/tcpdump/](https://danielmiessler.com/p/tcpdump/). THough I am not sure
+> **Preface** I did not write this, I found this many moons ago and saved it to my Evernote. I never made note of the URL and who _did_ write this, but after some Googleing, I think it might [be from this person https://danielmiessler.com/p/tcpdump/](https://danielmiessler.com/p/tcpdump/). Though I am not sure
 {:.prompt-info}
 
 tcpdump is the premier network analysis tool for information security professionals. Having a solid grasp of this über-powerful application is mandatory for anyone desiring a thorough understanding of TCP/IP. Many prefer to use higher level analysis tools such as Wireshark, but I believe this to usually be a mistake.
