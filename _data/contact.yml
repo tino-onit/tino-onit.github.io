@@ -4,7 +4,11 @@
   icon: "fab fa-github"
 
 - type: twitter
+<<<<<<< HEAD
   icon: "fab fa-twitter"
+=======
+  icon: "fa-brands fa-x-twitter"
+>>>>>>> v7.2.4
 
 - type: email
   icon: "fas fa-envelope"
@@ -26,3 +30,18 @@
 # - type: stack-overflow
 #   icon: 'fab fa-stack-overflow'
 #   url:  ''                  # Fill with your stackoverflow homepage
+<<<<<<< HEAD
+=======
+#
+# - type: bluesky
+#   icon: 'fa-brands fa-bluesky'
+#   url: ''                   # Fill with your Bluesky profile link
+#
+# - type: reddit
+#   icon: 'fa-brands fa-reddit'
+#   url: ''                   # Fill with your Reddit profile link
+#
+# - type: threads
+#   icon: 'fa-brands fa-threads'
+#   url: ''                   # Fill with your Threads profile link
+>>>>>>> v7.2.4
