@@ -6,6 +6,10 @@ Gemfile.lock
 # Jekyll cache
 .jekyll-cache
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+.jekyll-metadata
+>>>>>>> v7.2.4
 =======
 .jekyll-metadata
 >>>>>>> v7.2.4
@@ -21,10 +25,13 @@ package-lock.json
 # IDE configurations
 .idea
 <<<<<<< HEAD
+<<<<<<< HEAD
 .vscode
 
 # Misc
 =======
+=======
+>>>>>>> v7.2.4
 .vscode/*
 !.vscode/settings.json
 !.vscode/extensions.json
@@ -32,5 +39,8 @@ package-lock.json
 
 # Misc
 _sass/vendors
+<<<<<<< HEAD
+>>>>>>> v7.2.4
+=======
 >>>>>>> v7.2.4
 assets/js/dist

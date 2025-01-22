@@ -4,7 +4,11 @@
 platforms:
   - type: Twitter
 <<<<<<< HEAD
+<<<<<<< HEAD
     icon: "fab fa-twitter"
+=======
+    icon: "fa-brands fa-square-x-twitter"
+>>>>>>> v7.2.4
 =======
     icon: "fa-brands fa-square-x-twitter"
 >>>>>>> v7.2.4
@@ -27,8 +31,11 @@ platforms:
   # - type: Weibo
   #   icon: "fab fa-weibo"
 <<<<<<< HEAD
+<<<<<<< HEAD
   #   link: "http://service.weibo.com/share/share.php?title=TITLE&url=URL"
 =======
+=======
+>>>>>>> v7.2.4
   #   link: "https://service.weibo.com/share/share.php?title=TITLE&url=URL"
   #
   # - type: Mastodon
@@ -55,4 +62,7 @@ platforms:
   # - type: Threads
   #   icon: "fa-brands fa-square-threads"
   #   link: "https://www.threads.net/intent/post?text=TITLE%20URL"
+<<<<<<< HEAD
+>>>>>>> v7.2.4
+=======
 >>>>>>> v7.2.4

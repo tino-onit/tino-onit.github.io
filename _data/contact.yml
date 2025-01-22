@@ -5,7 +5,11 @@
 
 - type: twitter
 <<<<<<< HEAD
+<<<<<<< HEAD
   icon: "fab fa-twitter"
+=======
+  icon: "fa-brands fa-x-twitter"
+>>>>>>> v7.2.4
 =======
   icon: "fa-brands fa-x-twitter"
 >>>>>>> v7.2.4
@@ -31,7 +35,10 @@
 #   icon: 'fab fa-stack-overflow'
 #   url:  ''                  # Fill with your stackoverflow homepage
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> v7.2.4
 #
 # - type: bluesky
 #   icon: 'fa-brands fa-bluesky'
@@ -44,4 +51,7 @@
 # - type: threads
 #   icon: 'fa-brands fa-threads'
 #   url: ''                   # Fill with your Threads profile link
+<<<<<<< HEAD
+>>>>>>> v7.2.4
+=======
 >>>>>>> v7.2.4
