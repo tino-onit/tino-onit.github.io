@@ -4,13 +4,10 @@
 theme: jekyll-theme-chirpy
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 # Change the following value to '/PROJECT_NAME' ONLY IF your site type is GitHub Pages Project sites
 # and doesn't have a custom domain.
 baseurl: ""
 
-=======
->>>>>>> v7.2.4
 =======
 >>>>>>> v7.2.4
 # The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
@@ -19,13 +16,8 @@ baseurl: ""
 lang: en
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
 timezone: America/Los_Angeles
-=======
-# Change to your timezone › https://kevinnovak.github.io/Time-Zone-Picker
-timezone:
->>>>>>> v7.2.4
 =======
 # Change to your timezone › https://kevinnovak.github.io/Time-Zone-Picker
 timezone:
@@ -34,7 +26,6 @@ timezone:
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 title: Is the Internet working? # the main title
 
@@ -52,8 +43,6 @@ github:
 twitter:
   username: tin0_0nit # change to your twitter username
 =======
-=======
->>>>>>> v7.2.4
 title: Chirpy # the main title
 
 tagline: A text-focused Jekyll theme # it will display as the subtitle
@@ -70,15 +59,11 @@ github:
 
 twitter:
   username: twitter_username # change to your Twitter username
-<<<<<<< HEAD
->>>>>>> v7.2.4
-=======
 >>>>>>> v7.2.4
 
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-<<<<<<< HEAD
 <<<<<<< HEAD
   name: Tino
   email: none@yourbiz.com # change to your email address
@@ -87,28 +72,20 @@ social:
     - https://twitter.com/tin0_0nit # change to your twitter homepage
     - https://github.com/tino-onit # change to your github homepage
 =======
-=======
->>>>>>> v7.2.4
   name: your_full_name
   email: example@domain.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
     - https://twitter.com/username # change to your Twitter homepage
     - https://github.com/username # change to your GitHub homepage
-<<<<<<< HEAD
->>>>>>> v7.2.4
-=======
 >>>>>>> v7.2.4
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 google_site_verification: # fill in to your verification string
 =======
-=======
->>>>>>> v7.2.4
 # Site Verification Settings
 webmaster_verifications:
   google: # fill in your Google verification code
@@ -117,15 +94,11 @@ webmaster_verifications:
   yandex: # fill in your Yandex verification code
   baidu: # fill in your Baidu verification code
   facebook: # fill in your Facebook verification code
-<<<<<<< HEAD
->>>>>>> v7.2.4
-=======
 >>>>>>> v7.2.4
 
 # ↑ --------------------------
 # The end of `jekyll-seo-tag` settings
 
-<<<<<<< HEAD
 <<<<<<< HEAD
 google_analytics:
   id: 'G-XX03WZWKSX' # fill in your Google Analytics ID
@@ -134,8 +107,6 @@ google_analytics:
     proxy_endpoint: # fill in the Google Analytics superProxy endpoint of Google App Engine
     cache_path: # the local PV cache data, friendly to visitors from GFW region
 =======
-=======
->>>>>>> v7.2.4
 # Web Analytics Settings
 analytics:
   google:
@@ -156,9 +127,6 @@ analytics:
 # Page views settings
 pageviews:
   provider: # now only supports 'goatcounter'
-<<<<<<< HEAD
->>>>>>> v7.2.4
-=======
 >>>>>>> v7.2.4
 
 # Prefer color scheme setting.
@@ -169,7 +137,6 @@ pageviews:
 #
 # Available options:
 #
-<<<<<<< HEAD
 <<<<<<< HEAD
 #     light  - Use the light color scheme
 #     dark   - Use the dark color scheme
@@ -186,8 +153,6 @@ img_cdn:
 # the avatar on sidebar, support local or CORS resources
 avatar: https://pbs.twimg.com/profile_images/1586112513589977088/gZAHtSN4_400x400.jpg
 =======
-=======
->>>>>>> v7.2.4
 #     light — Use the light color scheme
 #     dark — Use the dark color scheme
 #
@@ -206,9 +171,6 @@ avatar:
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
 social_preview_image: # string, local or CORS resources
-<<<<<<< HEAD
->>>>>>> v7.2.4
-=======
 >>>>>>> v7.2.4
 
 # boolean type, the global switch for TOC in posts.
@@ -216,14 +178,8 @@ toc: true
 
 comments:
 <<<<<<< HEAD
-<<<<<<< HEAD
   active: # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
   # The active options are as follows:
-=======
-  # Global switch for the post-comment system. Keeping it empty means disabled.
-  provider: # [disqus | utterances | giscus]
-  # The provider options are as follows:
->>>>>>> v7.2.4
 =======
   # Global switch for the post-comment system. Keeping it empty means disabled.
   provider: # [disqus | utterances | giscus]
@@ -243,10 +199,6 @@ comments:
     category_id:
     mapping: # optional, default to 'pathname'
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    strict: # optional, default to '0'
->>>>>>> v7.2.4
 =======
     strict: # optional, default to '0'
 >>>>>>> v7.2.4
@@ -261,7 +213,6 @@ assets:
     # specify the Jekyll environment, empty means both
     # only works if `assets.self_host.enabled` is 'true'
 <<<<<<< HEAD
-<<<<<<< HEAD
     env: # [development|production]
 
 pwa:
@@ -272,8 +223,6 @@ paginate: 10
 plugins:
   - jemoji
 =======
-=======
->>>>>>> v7.2.4
     env: # [development | production]
 
 pwa:
@@ -290,19 +239,12 @@ paginate: 10
 
 # The base URL of your site
 baseurl: ""
-<<<<<<< HEAD
->>>>>>> v7.2.4
-=======
 >>>>>>> v7.2.4
 
 # ------------ The following options are not recommended to be modified ------------------
 
 kramdown:
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
-  footnote_backlink: "&#8617;&#xfe0e;"
->>>>>>> v7.2.4
 =======
   footnote_backlink: "&#8617;&#xfe0e;"
 >>>>>>> v7.2.4
@@ -343,7 +285,6 @@ defaults:
       layout: page
       permalink: /:title/
 <<<<<<< HEAD
-<<<<<<< HEAD
   - scope:
       path: assets/img/favicons
     values:
@@ -352,8 +293,6 @@ defaults:
       path: assets/js/dist
     values:
       swcache: true
-=======
->>>>>>> v7.2.4
 =======
 >>>>>>> v7.2.4
 
@@ -373,7 +312,6 @@ exclude:
   - "*.gem"
   - "*.gemspec"
 <<<<<<< HEAD
-<<<<<<< HEAD
   - tools
   - README.md
   - CHANGELOG.md
@@ -382,8 +320,6 @@ exclude:
   - node_modules
   - package*.json
 =======
-=======
->>>>>>> v7.2.4
   - docs
   - tools
   - README.md
@@ -391,9 +327,6 @@ exclude:
   - purgecss.js
   - rollup.config.js
   - "package*.json"
-<<<<<<< HEAD
->>>>>>> v7.2.4
-=======
 >>>>>>> v7.2.4
 
 jekyll-archives:
