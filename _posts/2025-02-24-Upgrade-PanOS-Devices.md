@@ -31,8 +31,9 @@ The process for firewall device (physical or virtual) is roughly the same. In th
 
 It is recommended to upgrade the Primary firewall first and then upgrade the Secondary firewall. To ensure that HA is working properly, you should perform a fail-over. This is done for two reasons:
 
-1) Ensure that HA failover is functioning properly
-2) Ensure that the passive firewall is functioning properly and is able to pass traffic without issues
+> Ensure that HA failover is functioning properly
+
+> Ensure that the passive firewall is functioning properly and is able to pass traffic without issues
 
 ### Primary firewall
 
@@ -41,16 +42,16 @@ It is recommended to upgrade the Primary firewall first and then upgrade the Sec
 
 2. Save/export tech support and Device state and save named device config snapshots
 
-3. Upgrade Primary firewall ( Device > Software )
+3. Upgrade Primary firewall ( Device > Software ) _refresh might be needed_
     - Download 9.0.0
     - Install 9.0.0
     - Reboot
 
-4. Verify commits in CLI > 'show jobs all'
+4. Verify commits in CLI with `show jobs all` then
     - Download 9.0.8
     - Install 9.0.8
 
-5. Run the following command to make Primary firewall functional again: > request high-availability state functional
+5. Run the following command to make Primary firewall functional again: `request high-availability state functional`
 
 6. This concludes upgrade on the Primary firewall.
 
@@ -60,19 +61,19 @@ It is recommended to upgrade the Primary firewall first and then upgrade the Sec
     **This will cause an HA failover. Production traffic is now going through Primary firewall with new software installed.**
     **Verify all applications are working as expected**
 
-2. Upgrade Secondary firewall ( Device > Software )
+2. Upgrade Secondary firewall ( Device > Software ) _refresh might be needed_
     - Download 9.0.0
     - Install 9.0.0
     - Reboot
 
-3. Verify commits in CLI > 'show jobs all'
+3. Verify commits in CLI with `show jobs all` then
     - Download 9.0.8
     - Install 9.0.8
     - Reboot
 
-4. Verify commits in CLI > 'show jobs all'
+4. Verify commits in CLI with `show jobs all` again
 
-5. Run the following command to make Secondary firewall functional again: > request high-availability state functional
+5. Run the following command to make Secondary firewall functional again: `request high-availability state functional`
 
 6. This concludes upgrade on the Secondary firewall.
 
@@ -82,17 +83,13 @@ It is recommended to upgrade the Primary firewall first and then upgrade the Sec
 
 - Run the following comma to suspend Primary firewall to fail traffic to the Secondary firewall
 
-```cmd
-request high-availability state suspend
-```
+`request high-availability state suspend`
 
 - Ask app owners to verify all applications are working on the network through the Secondary firewall. If there is a problem, skip to troubleshooting section.
 
 - Run the following CLI command to make Primary firewall functional again:
 
-```cmd
-request high-availability state functional
-```
+`request high-availability state functional`
 
 - Repeat the process to verify traffic works fine through Primary firewall (suspend the Secondary firewall, test functionality on Primary firewall, then re-enable Secondary firewall).
 
