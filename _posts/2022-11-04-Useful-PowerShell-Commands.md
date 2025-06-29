@@ -24,6 +24,7 @@ Get-ADUser -filter * -properties DisplayName,mobile | select DisplayName,mobile 
 ```powershell
 Get-ADUser -Identity <USERNAME> -Properties *
 ```
+
 ## View all locked accounts
 
 ```powershell
@@ -117,7 +118,8 @@ Get-GPOReport -Name "SetWallpaper" -ReportType HTML -Path ".\SetWallpaper.html"
 ```powershell
 Get-GPO -All | Where-Object { $_.ModificationTime } | Select-Object DisplayName,ModificationTime
 ```
-Example 
+
+Example
 
 ```powershell
 PS C:\Users\Administrator\Desktop> Get-GPO -All | Where-Object { $_.ModificationTime } | Select-Object DisplayName, ModificationTime
@@ -127,6 +129,20 @@ DisplayName                                ModificationTime
 Default Domain Policy                      10/14/2024 12:19:28 PM
 Default Domain Controllers Policy          10/14/2024 12:17:30 PM
 SetWallpaper                               10/31/2024 1:01:04 PM
+```
+
+## Check Group membership, across groups
+
+Useful one-line to check and see if members of <group1> are also members of <group2> (in this case, using a wildcard for the second group). And then only show the info I care about
+
+```powershell
+Get-ADGroupMember "group1" | Where-Object {(Get-ADUser $_.SamAccountName -Properties MemberOf).MemberOf -match "CN=.*VPN.*,"} | Select-Object SamAccountName, Name, DistinguishedName
+
+SamAccountName    Name                 DistinguishedName
+--------------    ----                 -----------------
+user01          user01              CN=user01,OU=Users,OU=NA,DC=something,DC=com
+user02          user02              CN=user02,OU=Users,OU=NA,DC=something,DC=com
+user03          user03              CN=user03,OU=Users,OU=NA,DC=something,DC=com
 ```
 
 -eof-
