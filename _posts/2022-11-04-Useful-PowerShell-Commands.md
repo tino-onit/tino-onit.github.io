@@ -122,7 +122,7 @@ Get-GPO -All | Where-Object { $_.ModificationTime } | Select-Object DisplayName,
 Example
 
 ```powershell
-PS C:\Users\Administrator\Desktop> Get-GPO -All | Where-Object { $_.ModificationTime } | Select-Object DisplayName, ModificationTime
+Get-GPO -All | Where-Object { $_.ModificationTime } | Select-Object DisplayName, ModificationTime
 
 DisplayName                                ModificationTime
 -----------                                ----------------
@@ -143,6 +143,18 @@ SamAccountName    Name                 DistinguishedName
 user01          user01              CN=user01,OU=Users,OU=NA,DC=something,DC=com
 user02          user02              CN=user02,OU=Users,OU=NA,DC=something,DC=com
 user03          user03              CN=user03,OU=Users,OU=NA,DC=something,DC=com
+```
+
+## List out the groups that a user is a member of
+
+When you need to get a nice clean list of the groups that a user is a member of
+
+```powershell
+Get-ADUser -Identity <userName> -Property MemberOf | Select-Object -ExpandProperty MemberOf
+
+CN=Domain Users,OU=Groups,OU=North America,DC=company,DC=com
+CN=Cool Users,OU=Groups,OU=North America,DC=company,DC=com
+CN=Dept-FunTimes,OU=Groups,OU=North America,DC=company,DC=com
 ```
 
 -eof-
