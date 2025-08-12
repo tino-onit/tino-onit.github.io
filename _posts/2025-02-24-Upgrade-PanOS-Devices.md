@@ -1,8 +1,8 @@
 ---
 title: "How to Upgrade PanOS Devices"
 date: 2025-02-24 10:00:00 -700
-categories: [Networking, Palo Alto, Troubleshooting]
-tags: [network, cmd, config, troubleshooting, firewall]    #TAG names should always be lowercase
+categories: [Networking]
+tags: [network,cmd,config,troubleshooting,firewall,palo alto]    #TAG names should always be lowercase
 ---
 
 # How to Upgrade PanOS Devices

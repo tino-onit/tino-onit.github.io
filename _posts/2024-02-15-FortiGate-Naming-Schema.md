@@ -1,7 +1,7 @@
 ---
 title: "FortiGate Naming Schema"
 date: 2024-02-15 10:00:00 -700
-categories: [misc]
+categories: [Misc]
 tags: [network,fortinet,firewall,paloalto,cisco]    #TAG names should always be lowercase
 ---
 

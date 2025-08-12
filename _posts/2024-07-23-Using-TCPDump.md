@@ -1,7 +1,7 @@
 ---
 title: "Using TCPDump"
 date: 2024-07-23 10:00:00 -700
-categories: [misc]
+categories: [Misc]
 tags: [network,snippet,cmd,troubleshooting,bash]    #TAG names should always be lowercase
 ---
 

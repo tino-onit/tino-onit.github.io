@@ -1,7 +1,7 @@
 ---
 title: "Using NMAP"
 date: 2024-02-10 10:00:00 -700
-categories: [misc]
+categories: [Misc]
 tags: [network,snippet,cmd,troubleshooting,bash]    #TAG names should always be lowercase
 ---
 

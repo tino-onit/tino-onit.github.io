@@ -1,7 +1,7 @@
 ---
 title: "Upgrading Network Gear"
 date: 2024-09-04 10:00:00 -700
-categories: [misc]
+categories: [Misc]
 tags: [network,snippet,cmd,troubleshooting,python]    #TAG names should always be lowercase
 ---
 

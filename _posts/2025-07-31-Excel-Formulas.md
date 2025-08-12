@@ -1,8 +1,8 @@
 ---
 title: "Excel Formulas"
 date: 2025-07-31 10:00:00 -700
-categories: [misc]
-tags: [snippet, troubleshooting]    #TAG names should always be lowercase
+categories: [Misc]
+tags: [snippet,troubleshooting]    #TAG names should always be lowercase
 ---
 
 # Excel Formulas
