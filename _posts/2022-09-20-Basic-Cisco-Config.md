@@ -34,6 +34,10 @@ line con 0
  login local
  logging synchronous
 !
+interface lo0
+ ip address 192.168.1.2 255.255.255.0
+ no shut
+!
 logging buffered 512000 informational
 !
 archive

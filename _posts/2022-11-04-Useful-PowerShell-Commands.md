@@ -157,4 +157,15 @@ CN=Cool Users,OU=Groups,OU=North America,DC=company,DC=com
 CN=Dept-FunTimes,OU=Groups,OU=North America,DC=company,DC=com
 ```
 
+## Unquoted Service Paths
+
+A way to find services with unquoted service paths. A local attacker can gain elevated privileges by inserting an executable file in the path of the affected service.
+
+[Context](https://blackpointcyber.com/blog/unlocking-the-mystery-of-unquoted-service-paths-another-opportunity-for-privilege-escalation/)
+
+
+```powershell
+Get-WmiObject win32_service | select Name,PathName,StartMode,StartName | where {$_.StartMode -ne "Disabled" -and $_.StartName -eq "LocalSystem" -and $_.PathName -notmatch "`"" -and $_.PathName -notmatch "C:\\Windows"} | Format-List
+```
+
 -eof-
