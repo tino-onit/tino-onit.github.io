@@ -11,19 +11,19 @@ These are some useful RegEx snippets that I find myself using over and over. Thi
 
 ---
 
-## Selecting all the trailing whitespace (tabs or space)
+### Selecting all the trailing whitespace (tabs or space)
 
 ```shell
 [ \t]+$
 ```
 
-## Select everything between two words
+### Select everything between two words
 
 ```shell
 (.*)
 ```
 
-## Remove all blank lines
+### Remove all blank lines
 
 ```shell
 ^(?:[\t ]*(?:\r?\n|\r))+
@@ -50,13 +50,13 @@ set fqdn "*.evercast-webrtc.com"
 next
 ```
 
-## Select everything up until specified character
+### Select everything up until specified character
 
 ```shell
 ^[^$]*
 ```
 
-## Select everything, from a character/word/other, to the end. Including blank spaces
+### Select everything, from a character/word/other, to the end. Including blank spaces
 
 ```shell
 ([ ,]+)(connected)(.*)
@@ -75,7 +75,7 @@ Gi1/0/30                        connected    107        a-full a-1000 10/100/100
 Gi1/0/30
 ```
 
-## Select all characters up to a specific character
+### Select all characters up to a specific character
 
 If you need to select everything up until a specific character, you can use the following
 
@@ -86,5 +86,17 @@ If you need to select everything up until a specific character, you can use the 
 ```
 
 Will select _160117.070:_ up until the first ":"
+
+### IPv4 Addresses
+
+Found myself needing to parse some logs for IPv4 addresses recently and a colleague helped me out and send this over my way.
+
+> Example: You want to filter out IPv4 addresses that start with 192.168.x.x
+
+```shell
+# all 4 octets
+# (\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})
+192.168.(\d{1,3}\.\d{1,3})
+```
 
 -eof-

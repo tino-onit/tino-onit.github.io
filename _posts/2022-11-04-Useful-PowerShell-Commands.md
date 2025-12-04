@@ -168,4 +168,14 @@ A way to find services with unquoted service paths. A local attacker can gain el
 Get-WmiObject win32_service | select Name,PathName,StartMode,StartName | where {$_.StartMode -ne "Disabled" -and $_.StartName -eq "LocalSystem" -and $_.PathName -notmatch "`"" -and $_.PathName -notmatch "C:\\Windows"} | Format-List
 ```
 
+## Creating a local user account
+
+A quick way to create a local user account and adding to an existing group. This allows you to set the password, with it displaying on the screen
+
+```powershell
+$UserPassword = Read-Host -AsSecureString "Enter Password" 
+New-LocalUser "user01" -Password $UserPassword -FullName "First Last" -Description "This is a local user account"
+Add-LocalGroupMember -Group "Users" -Member "user01"
+```
+
 -eof-
