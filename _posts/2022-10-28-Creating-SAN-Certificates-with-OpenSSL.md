@@ -49,7 +49,7 @@ Adding an updated, x509v3 configuration
     localityName                    = Locality Name (eg, city)
     organizationalUnitName          = Organizational Unit Name (eg, section)
     commonName                      = Common Name (eg, your name or your server\'s hostname)
-    OU                    		      = Organizational Unit
+    OU                    		  = Organizational Unit
     
     [v3_ext]
     basicConstraints = CA:FALSE
@@ -73,12 +73,12 @@ Adding an updated, x509v3 configuration
 
 Next, use __openssl__ to generate the CSR and KEY pair, using the config file
 
->[!NOTE]
->Save the passphrase used for encryption, you might need it later
-
 ```bash
 openssl req -new -config server01-san_cert.cnf -out server01_cert.csr -keyout server01_priv.key
 ```
+
+> **Note:** Save the passphrase used for encryption, you might need it later
+{: .prompt-warning }
 
 You should get prompted for the certificate information, like below
  
